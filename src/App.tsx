@@ -1,12 +1,8 @@
 import React from 'react';
-import Practice from './Practice';
+import './App.scss';
 
 function App() {
-  return (
-    <div>
-      <Practice />
-    </div>
-  );
+  return <div className="app_wrap">start</div>;
 }
 
 export default App;
