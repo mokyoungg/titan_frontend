@@ -1,7 +1,11 @@
 @import "./styles/reset.scss";
+@import "./styles/base";
+@import "./styles/mixins";
 
 .app_wrap {
-    width: 100%;
+    width: 375px;
     height: 100vh;
-    overflow: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    font-family: 'Cormorant', serif;
 }

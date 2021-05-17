@@ -1,0 +1,41 @@
+@import "../styles/reset.scss";
+@import "../styles/base";
+@import "../styles/mixins";
+
+
+.landing_wrap {
+    @include wrap;
+    .landing_header_section{
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-bottom: 5%;
+        .landing_header{
+            color: #F4F1EA;
+            font-weight: bold;
+            font-size: 120px;
+            padding-left: 10%;
+            padding-top: 20%;
+        }
+        .landing_line {
+            @include line;
+            height: 7px;
+        }
+    }    
+    .landing_btn_section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 40%;
+        button {
+            @include button;
+        }
+    }
+    .triangle_one{
+        @include triangle_top;
+    }
+    .triangle_two{
+        @include triangle_bottom;
+    }
+}
