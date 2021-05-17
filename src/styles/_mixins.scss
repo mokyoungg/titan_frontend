@@ -1,0 +1,103 @@
+@import "./base";
+
+@mixin wrap {
+    width: 375px;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    font-family: 'Cormorant', serif;
+    //font-family: 'Roboto', sans-serif;
+    background-color: #3E2B84;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+@mixin button {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #F4F1EA;
+    border: 1px solid #F4F1EA;
+    margin-bottom: 10px;
+    //font-family: 'Cormorant', serif;
+    font-family: 'Roboto', sans-serif;
+    color: #3E2B84;
+        &:hover{
+            background-color: #3E2B84;
+            color: #fff;
+            border: 2px solid #F4F1EA;
+        }
+         &:active{
+            transform: scale(0.96);
+        }
+}
+
+@mixin line {
+    width: 300px;
+    height: 4px;
+    margin: 0 auto;
+    background-color: #F4F1EA;
+}
+
+@mixin input_container {
+    height: 70px;
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@mixin input {
+    width: 300px;
+    background-color: transparent;
+    color: #F4F1EA;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F4F1EA;
+    height: 50%;
+    font-size: 15px;
+    &::placeholder{
+        color: #F4F1EA;
+    }
+    &:focus {
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #F4F1EA;
+    }
+}
+
+@mixin error_message {
+    color:#FA4C06;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin triangle_top{
+    width: 80px;
+    height: 80px;
+    border-top: 50px solid #fff;//#F4F1EA;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid #fff;//#F4F1EA;
+    position: relative;
+    top: 0%;
+    left: 0%;
+}
+
+@mixin  triangle_bottom {
+    width: 80px;
+    height: 80px;
+    border-top: 50px solid transparent;
+    border-right: 50px solid #fff;//#F4F1EA;
+    border-bottom: 50px solid #fff;//#F4F1EA;
+    border-left: 50px solid transparent;
+    position: relative;
+    bottom: 0%;
+    left: 74%;
+}

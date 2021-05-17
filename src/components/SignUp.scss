@@ -1,0 +1,39 @@
+@import "../styles/reset.scss";
+@import "../styles/base";
+@import "../styles/mixins";
+
+.sign_up_wrap {
+    @include wrap;
+    .sign_up_header_container{
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .sign_up_header{
+            color: #f4f1ea;
+            font-weight: bold;
+            font-size: 50px;
+            margin-left: 10%;
+        }
+    }
+    .sign_up_line {
+        @include line;
+    }
+    .sign_up_container {
+        height: 68%;
+        .input_container {
+            @include input_container;
+            input {
+                @include input;
+            }
+            .error_message {
+                @include error_message;
+            }
+        }
+    }
+    .sign_up_btn{
+        @include button;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+}

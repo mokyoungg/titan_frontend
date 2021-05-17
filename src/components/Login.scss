@@ -1,0 +1,43 @@
+@import "../styles/reset.scss";
+@import "../styles/base";
+@import "../styles/mixins";
+
+.login_wrap {
+    @include wrap;
+    .login_header_container{
+        height: 30%;
+        //border: 1px solid #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .login_header{
+            color: #F4F1EA;
+            font-weight: bold;
+            font-size: 50px;
+            margin-left: 10%;
+        }
+    }
+    .login_line {
+        @include line;
+        margin-top: 2%;
+    }
+    .login_container {
+        //border: 1px solid #fff;
+        height: 68%;
+        .input_container {
+            //border: 1px solid yellow;
+            @include input_container;
+            input {
+              @include input;
+            }
+            .error_message {
+             @include error_message;
+            }
+        }
+        .login_btn {
+            @include button;
+            margin-top: 10%;
+            margin-left: 10%;
+        }
+    }
+}
