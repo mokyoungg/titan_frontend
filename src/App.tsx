@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.scss';
 
-import Landing from './components/Landing';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import Routes from './Routes';
 
 const App: React.FC = () => {
   return (
     <div className="app_wrap">
-      <Landing />
+      <Routes />
     </div>
   );
 };
