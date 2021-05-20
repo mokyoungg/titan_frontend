@@ -1,21 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
+import { valuesInterface, errorsInterface } from './form.model';
 
 import validate from './validate';
 
 interface userInfoState {
-  info: {
-    email: string,
-    password: string,
-    password2: string,
-    [key: string]: string,
-  };
-  error: {
-    email: string,
-    password: string,
-    password2: string,
-    [key: string]: string,
-  };
+  info: valuesInterface;
+  error: errorsInterface;
 }
 
 interface info {
