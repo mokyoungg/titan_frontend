@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Login.scss';
 
 import { useAppSelector, useAppDispatch } from '../app/hooks';
@@ -8,6 +8,13 @@ const Login: React.FC = () => {
   const userInfo = useAppSelector((state) => state.userInfo.info);
   const errMessage = useAppSelector((state) => state.userInfo.error);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    window.addEventListener('popstate', (event) => {
+      alert('모든 데이터가 삭제됩니다.');
+      window.location.reload();
+    });
+  }, []);
 
   const handleSubmit = () => {
     let value = false;
