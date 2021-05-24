@@ -1,7 +1,7 @@
-import { valuesInterface, errorsInterface } from './form.model';
+import { formInterface } from './form.model';
 
-export default function validate(values: valuesInterface): errorsInterface {
-  let errors: errorsInterface = {
+export default function validate(values: formInterface): formInterface {
+  let errors: formInterface = {
     email: '',
     password: '',
     password2: '',
