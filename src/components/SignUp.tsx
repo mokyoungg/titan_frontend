@@ -2,48 +2,10 @@ import React from 'react';
 import './SignUp.scss';
 import AlertModal from './alert/AlertModal';
 
-import { useAppSelector, useAppDispatch } from '../app/hooks';
-import { makeUserInfo } from '../features/form/userInfoSlice';
-import { handleModal } from '../features/modal/modalSlice';
+import useForm from '../features/form/useForm';
 
 const SignUp: React.FC = () => {
-  const userInfo = useAppSelector((state) => state.userInfo.info);
-  const errMessage = useAppSelector((state) => state.userInfo.error);
-  const dispatch = useAppDispatch();
-
-  const handleSubmit = () => {
-    let value = false;
-    let error = true;
-
-    for (let key in userInfo) {
-      // console.log(userInfo[key]);
-      if (userInfo[key].length > 0) {
-        value = true;
-      } else {
-        value = false;
-        break;
-      }
-    }
-
-    for (let key in errMessage) {
-      if (errMessage[key].length > 0) {
-        error = true;
-        break;
-      } else {
-        error = false;
-      }
-    }
-
-    console.log('value :', value);
-    console.log('err :', error);
-
-    if (value && !error) {
-      console.log(userInfo);
-    } else {
-      // alert('다시 한번 확인해주세요');
-      dispatch(handleModal({ show: true, type: 'alert' }));
-    }
-  };
+  const { handleChange, handleSubmit, values, errors } = useForm();
 
   return (
     <div className="sign_up_wrap">
@@ -56,55 +18,38 @@ const SignUp: React.FC = () => {
           <input
             name="email"
             type="text"
-            value={userInfo.email}
             placeholder="Enter your Email"
             autoComplete="off"
-            onChange={(event) =>
-              dispatch(
-                makeUserInfo({
-                  name: event.target.name,
-                  value: event.target.value,
-                }),
-              )
-            }
+            value={values.email}
+            onChange={handleChange}
           />
-          <p className="error_message">{errMessage.email}</p>
+          {errors.email && <p className="error_message">{errors.email}</p>}
         </div>
         <div className="input_container">
           <input
             name="password"
             type="password"
-            value={userInfo.password}
+            value={values.password}
             placeholder="Enter your Password"
-            onChange={(event) =>
-              dispatch(
-                makeUserInfo({
-                  name: event.target.name,
-                  value: event.target.value,
-                }),
-              )
-            }
+            onChange={handleChange}
           />
-          <p className="error_message">{errMessage.password}</p>
+          {errors.password && (
+            <p className="error_message">{errors.password}</p>
+          )}
         </div>
         <div className="input_container">
           <input
             name="password2"
             type="password"
-            value={userInfo.password2}
+            value={values.password2}
             placeholder="Enter your Password Again"
-            onChange={(event) =>
-              dispatch(
-                makeUserInfo({
-                  name: event.target.name,
-                  value: event.target.value,
-                }),
-              )
-            }
+            onChange={handleChange}
           />
-          <p className="error_message">{errMessage.password2}</p>
+          {errors.password2 && (
+            <p className="error_message">{errors.password2}</p>
+          )}
         </div>
-        <button className="sign_up_btn" onClick={() => handleSubmit()}>
+        <button className="sign_up_btn" onClick={() => handleSubmit('sign_up')}>
           Continue
         </button>
       </div>
@@ -125,3 +70,19 @@ export default SignUp;
 //     //history.pushState(null, document.title, location.href);
 //   });
 // }, []);
+
+// onChange 함수와 redux 사용 코드
+// <input
+// name="password2"
+// type="password"
+// value={userInfo.password2}
+// placeholder="Enter your Password Again"
+// onChange={(event) =>
+//   dispatch(
+//     makeUserInfo({
+//       name: event.target.name,
+//       value: event.target.value,
+//     }),
+//   )
+// }
+// />

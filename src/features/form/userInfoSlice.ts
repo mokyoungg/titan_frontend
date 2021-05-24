@@ -1,12 +1,15 @@
+// 로그인, 회원가입의 input 관리를 전역이 아닌 컴포넌트내부에서
+// 관리하기로 결정, 현재는 필요없는 파일이다.(0524 기준)
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import { valuesInterface, errorsInterface } from './form.model';
+import { formInterface } from './form.model';
 
 import validate from './validate';
 
 interface userInfoState {
-  info: valuesInterface;
-  error: errorsInterface;
+  info: formInterface;
+  error: formInterface;
 }
 
 interface info {
