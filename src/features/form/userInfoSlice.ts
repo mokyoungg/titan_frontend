@@ -39,6 +39,12 @@ export const userInfoSlice = createSlice({
 
       state.error = errorMessage;
     },
+    // redux store 초기화(reset)를 위한 코드
+    // reset: (state) => {
+    //   // From here we can take action only at this "counter" state
+    //   // But, as we have taken care of this particular "logout" action
+    //   // in rootReducer, we can use it to CLEAR the complete Redux Store's state
+    // },
   },
 });
 
