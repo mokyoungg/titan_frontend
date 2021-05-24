@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './SignUp.scss';
+import AlertModal from './alert/AlertModal';
 
 import { useAppSelector, useAppDispatch } from '../app/hooks';
 import { makeUserInfo } from '../features/form/userInfoSlice';
+import { handleModal } from '../features/modal/modalSlice';
 
 const SignUp: React.FC = () => {
   const userInfo = useAppSelector((state) => state.userInfo.info);
   const errMessage = useAppSelector((state) => state.userInfo.error);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    window.addEventListener('popstate', (event) => {
-      alert('모든 데이터가 삭제됩니다.');
-      window.location.reload();
-    });
-  }, []);
 
   const handleSubmit = () => {
     let value = false;
@@ -45,7 +40,8 @@ const SignUp: React.FC = () => {
     if (value && !error) {
       console.log(userInfo);
     } else {
-      alert('다시 한번 확인해주세요');
+      // alert('다시 한번 확인해주세요');
+      dispatch(handleModal({ show: true, type: 'alert' }));
     }
   };
 
@@ -112,8 +108,20 @@ const SignUp: React.FC = () => {
           Continue
         </button>
       </div>
+      <AlertModal />
     </div>
   );
 };
 
 export default SignUp;
+
+// 뒤로가기 버튼 클릭시, 페이지 새로고침을 위한 코드
+// useEffect(() => {
+//   history.pushState(null, document.title, location.href);
+//   window.addEventListener('popstate', (event) => {
+//     // alert('모든 데이터가 삭제됩니다.');
+//     dispatch(handleModal({ show: true, type: 'confirm' }));
+//     // window.location.reload();
+//     //history.pushState(null, document.title, location.href);
+//   });
+// }, []);
