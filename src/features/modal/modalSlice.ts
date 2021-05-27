@@ -8,7 +8,7 @@ interface modalState {
 
 const initialState: modalState = {
   show: false,
-  type: '',
+  type: ''
 };
 
 export const modalSlice = createSlice({
@@ -18,8 +18,8 @@ export const modalSlice = createSlice({
     handleModal: (state, action: PayloadAction<modalState>) => {
       state.show = action.payload.show;
       state.type = action.payload.type;
-    },
-  },
+    }
+  }
 });
 
 export const { handleModal } = modalSlice.actions;

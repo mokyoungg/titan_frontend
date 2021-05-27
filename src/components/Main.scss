@@ -30,9 +30,11 @@
         margin: 3px auto;
 
     }
-    .phrase_section {
+    .quotes_section {
         height: 30%;
-        .phrase {
+        border: 1px solid red;
+        position: relative;
+        .quotes {
             padding-top: 10%;
             margin-left: 5%;
             width: 70%;
@@ -40,6 +42,23 @@
             font-size: 38px;
             font-weight: bold;
             text-decoration: underline;
+        }
+        .long_quotes {
+            padding-top: 5%;
+            margin-left: 5%;
+            width: 75%;
+            color: #3E2B84;
+            font-size: 24px;//38px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .author{
+            position: absolute;
+            border: 1px solid blue;
+            right: 5%;
+            bottom: 0;
+            color: #3E2B84;
+            font-weight: bold;
         }
     }
     .date_section {
