@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
 import './Main.scss';
+
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
+
+import ReactDayPicker from './calendar/ReactDayPicker';
+import { handleCalendar } from '../features/calendar/calendarSlice';
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
   const quotes = useAppSelector((state) => state.quotes.quotes);
+  const show = useAppSelector((state) => state.showCalendar);
+
+  console.log(show);
 
   useEffect(() => {
     const randomNum = getRanNum();
@@ -21,8 +28,11 @@ const Main: React.FC = () => {
   return (
     <div className="main_wrap">
       <div className="main_header">
-        <div className="time_line">Time line</div>
+        <div className="time_line" onClick={() => dispatch(handleCalendar())}>
+          Time line
+        </div>
       </div>
+      <ReactDayPicker />
       <hr className="header_line"></hr>
       <hr className="header_line"></hr>
       <div className="quotes_section">
