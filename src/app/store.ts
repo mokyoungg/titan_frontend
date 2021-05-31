@@ -2,12 +2,14 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import userInfoReducer from '../features/form/userInfoSlice';
 import modalReducer from '../features/modal/modalSlice';
 import quotesReducer from '../features/quotes/fetchQuotesSlice';
+import calendarReducer from '../features/calendar/calendarSlice';
 
 export const store = configureStore({
   reducer: {
     userInfo: userInfoReducer,
     showModal: modalReducer,
-    quotes: quotesReducer
+    quotes: quotesReducer,
+    showCalendar: calendarReducer
   },
   middleware: [...getDefaultMiddleware()]
 });

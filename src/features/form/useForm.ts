@@ -10,13 +10,13 @@ const useForm = () => {
   const [values, setValues] = useState<formInterface>({
     email: '',
     password: '',
-    password2: '',
+    password2: ''
   });
 
   const [errors, setErrors] = useState<formInterface>({
     email: '',
     password: '',
-    password2: '',
+    password2: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
