@@ -21,13 +21,13 @@ const initialState: userInfoState = {
   info: {
     email: '',
     password: '',
-    password2: '',
+    password2: ''
   },
   error: {
     email: '',
     password: '',
-    password2: '',
-  },
+    password2: ''
+  }
 };
 
 export const userInfoSlice = createSlice({
@@ -41,14 +41,14 @@ export const userInfoSlice = createSlice({
       let errorMessage = validate(state.info);
 
       state.error = errorMessage;
-    },
+    }
     // redux store 초기화(reset)를 위한 코드
     // reset: (state) => {
     //   // From here we can take action only at this "counter" state
     //   // But, as we have taken care of this particular "logout" action
     //   // in rootReducer, we can use it to CLEAR the complete Redux Store's state
     // },
-  },
+  }
 });
 
 export const { makeUserInfo } = userInfoSlice.actions;

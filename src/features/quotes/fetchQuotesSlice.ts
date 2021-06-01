@@ -54,6 +54,7 @@ const fetchQuotesSlice = createSlice({
 
   },
   extraReducers: (builder) => {
+  
     // When we send a request,
     // fetchQuotes.pending is being fired:
     builder.addCase(fetchQuotes.pending, (state) => {

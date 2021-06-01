@@ -5,19 +5,23 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
 
 import ReactDayPicker from './calendar/ReactDayPicker';
-import { handleCalendar } from '../features/calendar/calendarSlice';
+import { showCalendar } from '../features/calendar/calendarSlice';
+
+import useCalendar from '../features/calendar/useCalendar';
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
   const quotes = useAppSelector((state) => state.quotes.quotes);
-  const show = useAppSelector((state) => state.showCalendar);
+  const calendar = useAppSelector((state) => state.handleCalendar.selectDate);
 
-  console.log(show);
+  const { getDate, dateInfo } = useCalendar();
 
   useEffect(() => {
     const randomNum = getRanNum();
     dispatch(fetchQuotes(randomNum));
-  }, []);
+
+    getDate(calendar);
+  }, [calendar]);
 
   const getRanNum = () => {
     const randomNum = Math.random() * 1400;
@@ -28,8 +32,8 @@ const Main: React.FC = () => {
   return (
     <div className="main_wrap">
       <div className="main_header">
-        <div className="time_line" onClick={() => dispatch(handleCalendar())}>
-          Time line
+        <div className="calendar_btn" onClick={() => dispatch(showCalendar())}>
+          Calendar
         </div>
       </div>
       <ReactDayPicker />
@@ -48,8 +52,17 @@ const Main: React.FC = () => {
         ) : null}
       </div>
       <div className="date_section">
-        <div className="today">25</div>
-        <div className="other_date">26 27</div>
+        <div className="today">
+          {dateInfo.today < 10 ? `0${dateInfo.today}` : `${dateInfo.today}`}
+        </div>
+        <div className="other_date">
+          {dateInfo.tomorrow < 10
+            ? `0${dateInfo.tomorrow}`
+            : `${dateInfo.tomorrow}`}
+          {dateInfo.dayAfterTomorrow < 10
+            ? `0${dateInfo.dayAfterTomorrow}`
+            : `${dateInfo.dayAfterTomorrow}`}
+        </div>
       </div>
       <div className="greeting_section">
         <div className="greeting">Hello, Guest</div>

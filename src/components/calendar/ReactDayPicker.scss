@@ -1,24 +1,26 @@
 @import "../../styles/reset.scss";
+@import "../../styles//mixins";
 
 .calendar_wrap {
     z-index: 10;
     position: absolute;
     background: white;
-    border: 1px solid red;
     top: 7%;
     right: 0;
 }
 
-.calendar_btn {
-    background: transparent;
-    width: 15px;
-    height: 15px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    top: 17px;
-    color: #2c2c2c;
+.calendar_btn_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 95%;
+  margin: 0 auto;
+  button {
+    @include button;
+    width: 40%;
+    background-color: white;
+    border: 1px solid #3e2b84;
+  }
 }
 
 //기존 react day picker의 css, (수정 가능)

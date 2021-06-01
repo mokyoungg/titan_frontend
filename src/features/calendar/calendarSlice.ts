@@ -1,28 +1,31 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 
 interface calendarState {
   show: boolean;
-  today: any;
+  selectDate: string;
 }
 
 const initialState: calendarState = {
   show: false,
-  today: []
+  selectDate: ''
 };
 
 export const calendarSlice = createSlice({
-  name: 'showCalendar',
+  name: 'handleCalendar',
   initialState,
   reducers: {
-    handleCalendar: (state) => {
+    showCalendar: (state) => {
       state.show = !state.show;
+    },
+    handleDate: (state, action: PayloadAction<string>) => {
+      state.selectDate = action.payload;
     }
   }
 });
 
-export const { handleCalendar } = calendarSlice.actions;
+export const { showCalendar, handleDate } = calendarSlice.actions;
 
-export const calendar = (state: RootState) => state.showCalendar;
+export const calendar = (state: RootState) => state.handleCalendar;
 
 export default calendarSlice.reducer;
