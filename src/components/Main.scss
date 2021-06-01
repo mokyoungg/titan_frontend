@@ -17,11 +17,12 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        .time_line {
+        .calendar_btn {
             font-size: 20px;
             color: #3E2B84;
             margin-right: 5%;
             font-weight: bold;
+            cursor: pointer;
         }
     }
     .header_line {

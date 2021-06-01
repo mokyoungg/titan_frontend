@@ -2,16 +2,24 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import userInfoReducer from '../features/form/userInfoSlice';
 import modalReducer from '../features/modal/modalSlice';
 import quotesReducer from '../features/quotes/fetchQuotesSlice';
-import calendarReducer from '../features/calendar/calendarSlice';
+import calendarReducer, {
+  handleDate
+} from '../features/calendar/calendarSlice';
 
 export const store = configureStore({
   reducer: {
     userInfo: userInfoReducer,
     showModal: modalReducer,
     quotes: quotesReducer,
-    showCalendar: calendarReducer
+    handleCalendar: calendarReducer
   },
-  middleware: [...getDefaultMiddleware()]
+  middleware: [
+    ...getDefaultMiddleware({
+      // serializableCheck: {
+      //   ignoredActions: ['']
+      // }
+    })
+  ]
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

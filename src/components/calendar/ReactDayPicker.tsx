@@ -3,10 +3,14 @@ import DayPicker from 'react-day-picker';
 import './ReactDayPicker.scss';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  showCalendar,
+  handleDate
+} from '../../features/calendar/calendarSlice';
 
 const ReactDayPicker: React.FC = () => {
   const dispatch = useAppDispatch();
-  const show = useAppSelector((state) => state.showCalendar.show);
+  const show = useAppSelector((state) => state.handleCalendar.show);
 
   const [selectedDay, setSelectDay] = useState<any[]>([new Date()]);
   const [completedDays, setCompletedDays] = useState([
@@ -22,16 +26,16 @@ const ReactDayPicker: React.FC = () => {
 
   const modifiersStyles = {
     completedDay: {
-      background: 'orange',
-      color: 'white'
+      //background: 'white',
+      color: 'orange'
     },
     sunday: {
-      color: 'red',
-      background: 'white'
+      color: 'red'
+      //background: 'white'
     },
     saturday: {
-      color: 'blue',
-      background: 'white'
+      color: 'blue'
+      //background: 'white'
     }
   };
 
@@ -44,13 +48,26 @@ const ReactDayPicker: React.FC = () => {
   } else {
     return (
       <div className="calendar_wrap">
-        {/* <button className="calendar_btn">x</button> */}
         <DayPicker
           modifiers={modifiers}
           modifiersStyles={modifiersStyles}
           onDayClick={handleDayClick}
           selectedDays={selectedDay}
         />
+        <div className="calendar_btn_section">
+          <button
+            className="handle_date_btn"
+            onClick={() => dispatch(handleDate(selectedDay.toLocaleString()))}
+          >
+            날짜로 이동
+          </button>
+          <button
+            className="close_btn"
+            onClick={() => dispatch(showCalendar())}
+          >
+            닫기
+          </button>
+        </div>
       </div>
     );
   }
