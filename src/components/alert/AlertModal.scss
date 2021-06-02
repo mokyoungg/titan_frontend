@@ -7,10 +7,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-style: 'Open Sans', sans-serif;
     .alert_message_wrap {
         width: 300px;
         height: 150px;
-        background-color: #fff;
+        background-color: #fa4c06;//#fff;
         position: relative;
     }
     .modal_off_btn{
@@ -19,8 +20,9 @@
         right:0;
         border:none;
         background: transparent;
-        color: #fa4c06;
+        color: #fff;//#fa4c06;
         font-size: 20px;
+        font-weight: 800;
         cursor: pointer;
     }
     .alert_header_container {
@@ -32,16 +34,16 @@
         justify-content: flex-end;
         .alert_header {
             font-size: 30px;
-            color:#FA4C06;
+            color:#fff;//#FA4C06;
             //font-family: 'Cormorant', serif;
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
+            //font-family: 'Roboto', sans-serif;
+            font-weight: 800;
             text-align: center;
         }
         hr {
-            width: 280px;
+            width: 250px;
             height: 2px;
-            background: #FA4C06;
+            background: #fff;//#FA4C06;
             border: none;
         }
     }
@@ -53,9 +55,8 @@
         align-items: center;
         justify-content: space-around;
         p {
-            color: #FA4C06;
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
+            color: #fff;//FA4C06;
+            font-weight: 800;
             font-size: 20px;
             text-align: center;
         }
@@ -63,17 +64,16 @@
             width: 250px;
             height: 30px;
             background: transparent;
-            border:  1px solid #fa4c06;;
-            color: #FA4C06;
-            font-family: 'Roboto', sans-serif;
+            border:  1px solid #fff;;
+            color: #fff;
+            font-style: 'Open Sans', sans-serif;
             font-weight: bold;
             font-size: 10px;
-            border-radius: 10px;
             transition: 0.4s;
             cursor: pointer;
             &:hover {
-                background: #FA4C06;
-                color: #fff;
+                background: #fff;
+                color: #FA4C06;
             }
         }
         .confirm_btn_container {

@@ -32,13 +32,31 @@ const Main: React.FC = () => {
   return (
     <div className="main_wrap">
       <div className="main_header">
+        <div className="greeting">Hello, Geust</div>
         <div className="calendar_btn" onClick={() => dispatch(showCalendar())}>
           Calendar
         </div>
       </div>
+      <div className="date_section">
+        <div className="today">
+          {dateInfo.today < 10 ? `0${dateInfo.today}` : `${dateInfo.today}`}
+        </div>
+        <div className="day_info">
+          <div className="month">WED/FEB</div>
+          <div className="other_day">
+            {dateInfo.tomorrow < 10
+              ? `0${dateInfo.tomorrow}`
+              : `${dateInfo.tomorrow}`}
+            {dateInfo.dayAfterTomorrow < 10
+              ? `0${dateInfo.dayAfterTomorrow}`
+              : `${dateInfo.dayAfterTomorrow}`}
+          </div>
+        </div>
+      </div>
       <ReactDayPicker />
-      <hr className="header_line"></hr>
-      <hr className="header_line"></hr>
+      <div className="start_section">
+        <button className="start_btn">Start Today's Diary</button>
+      </div>
       <div className="quotes_section">
         {quotes.text !== undefined ? (
           <>
@@ -50,23 +68,6 @@ const Main: React.FC = () => {
             </div>
           </>
         ) : null}
-      </div>
-      <div className="date_section">
-        <div className="today">
-          {dateInfo.today < 10 ? `0${dateInfo.today}` : `${dateInfo.today}`}
-        </div>
-        <div className="other_date">
-          {dateInfo.tomorrow < 10
-            ? `0${dateInfo.tomorrow}`
-            : `${dateInfo.tomorrow}`}
-          {dateInfo.dayAfterTomorrow < 10
-            ? `0${dateInfo.dayAfterTomorrow}`
-            : `${dateInfo.dayAfterTomorrow}`}
-        </div>
-      </div>
-      <div className="greeting_section">
-        <div className="greeting">Hello, Guest</div>
-        <button className="start_btn">Write Something</button>
       </div>
     </div>
   );

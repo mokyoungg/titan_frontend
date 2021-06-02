@@ -5,31 +5,61 @@
 
 .landing_wrap {
     @include wrap;
+    justify-content: center;
+    position: relative;
     .landing_header_section{
-        height: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        margin-bottom: 5%;
+       
+        margin-bottom: 10%;
         .landing_header{
-            color: #F4F1EA;
-            font-weight: bold;
-            font-size: 120px;
-            padding-left: 10%;
-            padding-top: 20%;
+            color: #fff;
+            font-weight: 800;
+            font-size: 50px;
+            //border: 1px solid yellow;
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+            span {
+                font-size: 80px;
+            }
+            hr {
+                background-color: #fff;
+                padding: 0%;
+                margin: 0%;
+                height: 3px;
+
+            }
         }
-        .landing_line {
-            @include line;
-            height: 7px;
-        }
+    }
+    .landing_line {
+        background: #fff;
+        height: 3px;
+        width: 90%;
+        //margin-bottom: 5%;
     }    
     .landing_btn_section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 40%;
+        justify-content: space-between;
+        height: 70px;
+        width: 70%;
+        margin: 0 auto;
+        //border: 1px solid #fff;
         button {
-            @include button;
+           width: 260px;
+           height: 30px;
+           background: transparent;
+           color: #fff;
+           font-size: 15px;
+           font-weight: bold;
+           border: 2px solid #fff;
+           cursor: pointer;
+           transition: 0.4s;
+           font-family: 'Open Sans', sans-serif;
+           &:hover {
+               background-color: #fff;
+               color: #063dd9;
+           }
         }
     }
     .triangle_one{
@@ -37,5 +67,8 @@
     }
     .triangle_two{
         @include triangle_bottom;
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
     }
 }

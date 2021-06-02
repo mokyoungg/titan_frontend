@@ -9,12 +9,13 @@ const Landing: React.FC = () => {
       {/* <div className="triangle_one"></div> */}
       <div className="landing_header_section">
         <h1 className="landing_header">
-          Tools of
-          <br />
-          Titan
+          TOOLS OF
+          <hr></hr>
+          <span>TITAN</span>
+          <hr></hr>
         </h1>
-        <hr className="landing_line"></hr>
       </div>
+      {/* <hr className="landing_line"></hr> */}
       <div className="landing_btn_section">
         <Link to="/login">
           <button className="login_btn">Login</button>

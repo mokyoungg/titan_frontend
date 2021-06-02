@@ -2,104 +2,117 @@
 @import "../styles/mixins";
 
 .main_wrap {
-    width: 375px;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0 auto;
-    background: #fff;
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
-    position: relative;
+    @include wrap;
+    align-items: center;
+    justify-content: flex-start;
     .main_header {
-        height: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        .calendar_btn {
-            font-size: 20px;
-            color: #3E2B84;
-            margin-right: 5%;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    }
-    .header_line {
-        height: 3px;
-        background: #3E2B84;
+        border-bottom: 5px solid #fff;
         width: 90%;
-        margin: 3px auto;
-
-    }
-    .quotes_section {
-        height: 30%;
-        position: relative;
-        .quotes {
-            padding-top: 10%;
-            margin-left: 5%;
-            width: 70%;
-            color: #3E2B84;
-            font-size: 38px;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .long_quotes {
-            padding-top: 5%;
-            margin-left: 5%;
-            width: 75%;
-            color: #3E2B84;
-            font-size: 24px;//38px;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .author{
-            position: absolute;
-            right: 5%;
-            bottom: 0;
-            color: #3E2B84;
-            font-weight: bold;
-        }
-    }
-    .date_section {
-        height: 30%;
+        height: 5%;
+        //margin:0 auto;
         display: flex;
-        align-items: flex-end;
-        .today {
-            color: #3E2B84;
-            font-size: 160px;
-            font-weight: bold;
-            margin-left: 5%;
-            width: 50%;
-        }
-        .other_date {
-            color: #dadada;
-            font-size: 63px;
-            width: 50%;
-            font-weight: bold;
-            line-height: 150%;
-        }
-    }
-    .greeting_section {
-        height: 40%;
-        background: #3E2B84;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         .greeting {
             color: #fff;
-            font-size: 30px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 800;
         }
+        .calendar_btn {
+            color: #fff;
+        }
+    }
+    .date_section {
+        width: 90%;
+        height: 20%;
+        //border: 1px solid red;
+        border-bottom: 5px solid #fff;
+        display: flex;
+        .today {
+            width: 50%;
+            height: 100%;
+            //border: 1px solid yellow;
+            font-weight: 800;
+            color: #ED3A1E;
+            font-size: 140px;
+        }
+        .day_info {
+            width: 50%;
+            height: 100%;
+            //border: 1px solid green;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .month {
+                width: 90%;
+                height: 50%;
+                //border: 1px solid green;
+                color: #fff;
+                font-weight: 800;
+                font-size: 35px;
+                padding-top: 20px;
+                letter-spacing: -3px;
+            }
+            .other_day{
+                width: 90%;
+                height: 50%;
+                //border: 1px solid green;
+                font-weight: 800;
+                color: #fff;
+                font-size: 60px;
+            }
+        }
+        
+    }
+    .start_section {
+        width: 90%;
+        height: 20%;
+        //border: 1px solid red;
+        border-bottom: 5px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .start_btn {
-            background: transparent;
-            border: none;
-            color: #FA4C06;
+            @include button;
+            height: 100px;
+            width: 330px;
+            font-weight: 800;
+            font-size: 30px;
+            letter-spacing: -3px;
+        }
+    }
+    .quotes_section{
+        //border: 1px solid red;
+        border-bottom: 5px solid #fff;
+        width: 90%;
+        position: relative;
+        padding: 20px 0px;
+        .quotes {
+            //border: 1px solid yellow;
+            width: 80%;
+            font-weight: 800;
+            color: #fff;
+            font-size: 30px;
+            text-decoration: underline;
+            font-style: italic;
+        }
+        .long_quotes{
+            width: 80%;
+            font-weight: 800;
+            color: #fff;
             font-size: 22px;
-            margin-top: 1%;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .author {
+            color: #fff;
+            font-weight: 800;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 20px;
+            font-style: italic;
         }
     }
 }

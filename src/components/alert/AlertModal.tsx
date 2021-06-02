@@ -61,7 +61,7 @@ const Alert: React.FC = () => {
             x
           </button>
           <div className="alert_header_container">
-            <h1 className="alert_header">Alert!</h1>
+            <h1 className="alert_header">Invalid!</h1>
             <hr></hr>
           </div>
           {modalType === 'alert' && renderAlert()}
