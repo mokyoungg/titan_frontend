@@ -4,7 +4,9 @@ const useCalendar = () => {
   const [dateInfo, setDateInfo] = useState({
     today: 0,
     tomorrow: 0,
-    dayAfterTomorrow: 0
+    dayAfterTomorrow: 0,
+    month: '',
+    day: ''
   });
 
   const strToDate = (str: string) => {
@@ -22,6 +24,10 @@ const useCalendar = () => {
       date = new Date();
     }
 
+    const dateFullStr = date.toString();
+    const month = dateFullStr.slice(4, 7);
+    const day = dateFullStr.slice(0, 3);
+
     const today = date.getDate();
     const tomorrow = new Date(date.setDate(date.getDate() + 1)).getDate();
     const dayAfterTomorrow = new Date(
@@ -32,7 +38,9 @@ const useCalendar = () => {
       ...dateInfo,
       today: today,
       tomorrow: tomorrow,
-      dayAfterTomorrow: dayAfterTomorrow
+      dayAfterTomorrow: dayAfterTomorrow,
+      month: month,
+      day: day
     });
   };
 

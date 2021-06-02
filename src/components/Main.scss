@@ -5,6 +5,7 @@
     @include wrap;
     align-items: center;
     justify-content: flex-start;
+    position: relative;
     .main_header {
         border-bottom: 5px solid #fff;
         width: 90%;
@@ -20,11 +21,12 @@
         }
         .calendar_btn {
             color: #fff;
+            cursor: pointer;
         }
     }
     .date_section {
         width: 90%;
-        height: 20%;
+        //height: 20%;
         //border: 1px solid red;
         border-bottom: 5px solid #fff;
         display: flex;

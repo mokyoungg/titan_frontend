@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './Main.scss';
+import CalendarIcon from './icons/CalendarIcon';
 
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
@@ -34,7 +35,7 @@ const Main: React.FC = () => {
       <div className="main_header">
         <div className="greeting">Hello, Geust</div>
         <div className="calendar_btn" onClick={() => dispatch(showCalendar())}>
-          Calendar
+          <CalendarIcon />
         </div>
       </div>
       <div className="date_section">
@@ -42,7 +43,9 @@ const Main: React.FC = () => {
           {dateInfo.today < 10 ? `0${dateInfo.today}` : `${dateInfo.today}`}
         </div>
         <div className="day_info">
-          <div className="month">WED/FEB</div>
+          <div className="month">
+            {dateInfo.day}/{dateInfo.month}
+          </div>
           <div className="other_day">
             {dateInfo.tomorrow < 10
               ? `0${dateInfo.tomorrow}`
