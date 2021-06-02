@@ -1,47 +1,49 @@
 @import "./base";
 
+//063DD9
+//#3E2B84
+//#ED3A1E
+//font-family: 'Open Sans', sans-serif;
+
 @mixin wrap {
     width: 375px;
     height: 100vh;
     overflow: hidden;
     margin: 0 auto;
-    font-family: 'Cormorant', serif;
+    font-family: 'Open Sans', sans-serif;
+    //font-family: 'Cormorant', serif;
     //font-family: 'Roboto', sans-serif;
-    background-color: #3E2B84;
+    background-color: #063DD9;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+}
+
+@mixin line {
+    background: #fff;
+    width: 300px;
 }
 
 @mixin button {
     width: 300px;
     height: 30px;
-    border-radius: 10px;
     cursor: pointer;
     transition: 0.4s;
     font-weight: bold;
     font-size: 16px;
-    background-color: #F4F1EA;
-    border: 1px solid #F4F1EA;
-    margin-bottom: 10px;
+    background-color: #fff;//#F4F1EA;
+    border: none;//1px solid #F4F1EA;
+    outline:none;
     //font-family: 'Cormorant', serif;
-    font-family: 'Roboto', sans-serif;
-    color: #3E2B84;
+    font-style: 'Open Sans', sans-serif;
+    color: #063DD9;
         &:hover{
-            background-color: #3E2B84;
+            background-color: #ED3A1E;
             color: #fff;
-            border: 2px solid #F4F1EA;
+            border: none;//2px solid #F4F1EA;
         }
          &:active{
             transform: scale(0.96);
         }
-}
-
-@mixin line {
-    width: 300px;
-    height: 4px;
-    margin: 0 auto;
-    background-color: #F4F1EA;
 }
 
 @mixin input_container {
