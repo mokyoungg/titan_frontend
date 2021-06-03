@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Main.scss';
 import CalendarIcon from './icons/CalendarIcon';
+import WeatherIcon from './icons/WeatherIcon';
 
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
@@ -9,20 +10,25 @@ import ReactDayPicker from './calendar/ReactDayPicker';
 import { showCalendar } from '../features/calendar/calendarSlice';
 
 import useCalendar from '../features/calendar/useCalendar';
+//import fetchWeather from '../features/weather/fetchWeatherSlice';
+import { fetchWeather } from '../features/weather/fetchWeatherSlice';
 
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
   const quotes = useAppSelector((state) => state.quotes.quotes);
   const calendar = useAppSelector((state) => state.handleCalendar.selectDate);
+  const weather = useAppSelector((state) => state.weather.weather);
 
   const { getDate, dateInfo } = useCalendar();
 
   useEffect(() => {
     const randomNum = getRanNum();
     dispatch(fetchQuotes(randomNum));
-
+    dispatch(fetchWeather(''));
     getDate(calendar);
   }, [calendar]);
+
+  console.log(weather);
 
   const getRanNum = () => {
     const randomNum = Math.random() * 1400;
@@ -34,6 +40,14 @@ const Main: React.FC = () => {
     <div className="main_wrap">
       <div className="main_header">
         <div className="greeting">Hello, Geust</div>
+        <div className="weather_section">
+          <div className="temp">
+            {weather.temp !== null ? `${Math.round(weather.temp)}℃` : null}
+          </div>
+          <div className="weather_icon">
+            {weather.weather !== null ? <WeatherIcon /> : null}
+          </div>
+        </div>
         <div className="calendar_btn" onClick={() => dispatch(showCalendar())}>
           <CalendarIcon />
         </div>

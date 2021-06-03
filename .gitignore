@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# 다음 이름을 가진 파일을 ignore한다.
+weatherApikey.ts
