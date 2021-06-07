@@ -1,0 +1,92 @@
+@import '../../styles/reset.scss';
+@import "../../styles/mixins";
+
+.emotion_wrap {
+    @include wrap;
+    background-color: #fff;
+    justify-content: center;
+    border: 1px solid blue;
+    .emotion_header{
+        //border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        .emotion_question{
+            width: 80%;
+            color: #2c2c2c;//#063dd9;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 600;
+            font-size: 25px;
+        }
+    }
+    .emotion_section {
+        //border: 1px solid blue;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       
+        .emotion_icon{
+            font-size: 120px;
+            color: #2c2c2c;
+           
+            .main_icon{
+                background-color: gold;
+                border-radius: 150px;
+                path:first-child {
+                   color: transparent;
+                  }
+            }
+        }
+        .emotion_text{
+            font-weight: 800;
+            font-size: 30px;
+            color: #2c2c2c;
+            //text-transform: uppercase; 
+            &::first-letter{
+                text-transform: uppercase;
+            }
+        }
+    }
+    .emotion_selection {
+        //border: 1px solid red;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .emotion_arr {
+            //width: 80%;
+            //height: 80px;
+            border: 1px solid #dadada;
+            border-radius: 20px;
+            font-size: 60px;
+            display: flex;
+            align-items: center;
+            span:first-child{
+                border-left: none;
+                margin: 0;
+            }
+            .emotion_el {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                //border-left: 1px solid #dadada;
+                &:hover {
+                    svg:first-child {
+                        background: gold;
+                        border-radius: 200px;
+                        
+                    }
+                    path:first-child {
+                        color: transparent;
+                    }
+                }
+              
+            }
+        }
+    }
+}

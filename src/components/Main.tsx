@@ -10,6 +10,7 @@ import ReactDayPicker from './calendar/ReactDayPicker';
 import { showCalendar } from '../features/calendar/calendarSlice';
 
 import useCalendar from '../features/calendar/useCalendar';
+// {}가 없을 경우, type error 발생
 //import fetchWeather from '../features/weather/fetchWeatherSlice';
 import { fetchWeather } from '../features/weather/fetchWeatherSlice';
 
@@ -27,8 +28,6 @@ const Main: React.FC = () => {
     dispatch(fetchWeather(''));
     getDate(calendar);
   }, [calendar]);
-
-  console.log(weather);
 
   const getRanNum = () => {
     const randomNum = Math.random() * 1400;
