@@ -4,6 +4,7 @@ import modalReducer from '../features/modal/modalSlice';
 import quotesReducer from '../features/quotes/fetchQuotesSlice';
 import calendarReducer from '../features/calendar/calendarSlice';
 import weatherReducer from '../features/weather/fetchWeatherSlice';
+import diaryReducer from '../features/diary/diarySlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     showModal: modalReducer,
     quotes: quotesReducer,
     handleCalendar: calendarReducer,
-    weather: weatherReducer
+    weather: weatherReducer,
+    diary: diaryReducer
   }
   //middleware: [...getDefaultMiddleware()]
 });
