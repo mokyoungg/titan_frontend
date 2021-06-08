@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './Main.scss';
 import CalendarIcon from './icons/CalendarIcon';
 import WeatherIcon from './icons/WeatherIcon';
+import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
@@ -71,7 +72,9 @@ const Main: React.FC = () => {
       </div>
       <ReactDayPicker />
       <div className="start_section">
-        <button className="start_btn">Start Today's Diary</button>
+        <Link to="/emotion">
+          <button className="start_btn">Start Today's Diary</button>
+        </Link>
       </div>
       <div className="quotes_section">
         {quotes.text !== undefined ? (

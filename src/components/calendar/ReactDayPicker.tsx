@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DayPicker from 'react-day-picker';
 import './ReactDayPicker.scss';
 
@@ -17,6 +17,11 @@ const ReactDayPicker: React.FC = () => {
     new Date(2021, 4, 3),
     new Date(2021, 4, 12)
   ]);
+
+  useEffect(() => {
+    const date = selectedDay.toLocaleString();
+    dispatch(handleDate(date));
+  }, []);
 
   const modifiers = {
     completedDay: completedDays,
