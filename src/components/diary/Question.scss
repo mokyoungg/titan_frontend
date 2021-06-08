@@ -1,0 +1,58 @@
+@import "../../styles/reset.scss";
+@import "../../styles/mixins";
+
+.question_wrap {
+    @include wrap;
+    //background-color: #fff;
+    border: 1px solid blue;
+    justify-content: center;
+    align-items: center;
+    .question_header_section{
+        height: 100px;
+        //border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        //background-color: #063DD9;;
+        p {
+            font-weight: 600;
+            font-size: 20px;
+            //border: 1px solid red;
+            //padding: 5px;
+            color: #fff;
+            text-decoration: underline;
+            width: 90%;
+        }
+    }
+    .question_answer_section{
+        //border: 1px solid red;
+        height:500px;
+        width: 90%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .answer_header {
+            width: 90%;
+            height: 30px;
+            text-transform: uppercase;
+        }
+        .answer {
+            width: 90%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            height: 80%;
+        }
+    }
+    .post_btn {
+        width: 90%;
+        height: 30px;
+        background: #ED3A1E;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 20px;
+        border: none;
+    }
+}

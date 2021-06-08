@@ -6,6 +6,19 @@
     background-color: #fff;
     justify-content: center;
     border: 1px solid blue;
+    position: relative;
+    .next_pg_btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background-color: transparent;
+        //border:1px solid #dadada;
+        font-size: 30px;
+        //border-radius: 20px;
+        border: none;
+        outline:none;
+        cursor: pointer;
+    }
     .emotion_header{
         //border: 1px solid red;
         display: flex;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Emotion.scss';
+import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { BiHappyAlt, BiAngry, BiSmile, BiMeh, BiSad } from 'react-icons/bi';
 
@@ -38,6 +39,9 @@ const Emotion: React.FC = () => {
 
   return (
     <div className="emotion_wrap">
+      <Link to="/question">
+        <button className="next_pg_btn">{'>'}</button>
+      </Link>
       <div className="emotion_header">
         <div className="emotion_question">Guest, how do you fell today?</div>
       </div>
