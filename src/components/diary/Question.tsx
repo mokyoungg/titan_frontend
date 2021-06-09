@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Question.scss';
 import { RouteComponentProps, withRouter } from 'react-router';
 
@@ -6,12 +6,34 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 type QuestionComponentProps = RouteComponentProps;
 
+const DIARY_LS = 'diary_list';
+
+interface Diary {
+  id: number;
+  date: string;
+  emotion: string;
+  content: string[];
+}
+
 const Question: React.FC<QuestionComponentProps> = ({ history }) => {
   const dispatch = useAppDispatch();
   const calendar = useAppSelector((state) => state.handleCalendar.selectDate);
   const emotion = useAppSelector((state) => state.diary.emotion);
 
   const [value, setValue] = useState<string>('1. ');
+  const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
+
+  useEffect(() => {
+    const loadedList = localStorage.getItem(DIARY_LS);
+
+    if (loadedList) {
+      const parsedList = JSON.parse(loadedList);
+      console.log(parsedList);
+      setLoadedDiary(parsedList);
+    } else {
+      console.log('없음');
+    }
+  }, []);
 
   //keyPress의 경우, enter키 입력시 해당 숫자를 표시하고 그 다음 줄에 커서가 존재한다.
   //이를 해결하기 위해 keyPress대신 keyUp으로 해당 함수를 변경하면 이를 해결할수있다.
@@ -34,13 +56,16 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
   };
 
   const postDiary = () => {
-    const postData = {
+    const postData: Diary = {
+      id: loadedDiary.length + 1,
       date: calendar,
       emotion: emotion,
-      text: value.split('\n')
+      content: value.split('\n')
     };
 
-    localStorage.setItem('diary', JSON.stringify(postData));
+    const newList = [...loadedDiary, postData];
+
+    localStorage.setItem(DIARY_LS, JSON.stringify(newList));
     history.push('/main');
   };
 
