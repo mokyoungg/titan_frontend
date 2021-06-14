@@ -7,7 +7,7 @@
     justify-content: flex-start;
     position: relative;
     .main_header {
-        border-bottom: 5px solid #fff;
+        border-bottom: 2px solid #fff;
         width: 90%;
         height: 5%;
         //margin:0 auto;
@@ -31,70 +31,10 @@
             cursor: pointer;
         }
     }
-    .date_section {
-        width: 90%;
-        //height: 20%;
-        //border: 1px solid red;
-        border-bottom: 5px solid #fff;
-        display: flex;
-        .today {
-            width: 50%;
-            height: 100%;
-            //border: 1px solid yellow;
-            font-weight: 800;
-            color: #ED3A1E;
-            font-size: 140px;
-        }
-        .day_info {
-            width: 50%;
-            height: 100%;
-            //border: 1px solid green;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            .month {
-                width: 90%;
-                height: 50%;
-                //border: 1px solid green;
-                color: #fff;
-                font-weight: 800;
-                font-size: 35px;
-                padding-top: 20px;
-                letter-spacing: -3px;
-                text-transform: uppercase;
-            }
-            .other_day{
-                width: 90%;
-                height: 50%;
-                //border: 1px solid green;
-                font-weight: 800;
-                color: #fff;
-                font-size: 60px;
-               
-            }
-        }
-        
-    }
-    .start_section {
-        width: 90%;
-        height: 20%;
-        //border: 1px solid red;
-        border-bottom: 5px solid #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .start_btn {
-            @include button;
-            height: 100px;
-            width: 330px;
-            font-weight: 800;
-            font-size: 30px;
-            letter-spacing: -3px;
-        }
-    }
+    
     .quotes_section{
         //border: 1px solid red;
-        border-bottom: 5px solid #fff;
+        //border-bottom: 2px solid #fff;
         width: 90%;
         position: relative;
         padding: 20px 0px;

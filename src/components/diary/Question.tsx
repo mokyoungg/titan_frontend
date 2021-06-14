@@ -8,17 +8,27 @@ type QuestionComponentProps = RouteComponentProps;
 
 const DIARY_LS = 'diary_list';
 
+interface DayInfo {
+  today: number;
+  month: string;
+  day: string;
+}
+
 interface Diary {
   id: number;
   date: string;
   emotion: string;
   content: string[];
+  dayInfo: DayInfo;
 }
 
 const Question: React.FC<QuestionComponentProps> = ({ history }) => {
   const dispatch = useAppDispatch();
-  const calendar = useAppSelector((state) => state.handleCalendar.selectDate);
+  const currentDate = useAppSelector(
+    (state) => state.handleCalendar.selectDate
+  );
   const emotion = useAppSelector((state) => state.diary.emotion);
+  const dayInfo = useAppSelector((state) => state.handleCalendar.dayInfo);
 
   const [value, setValue] = useState<string>('1. ');
   const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
@@ -58,9 +68,10 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
   const postDiary = () => {
     const postData: Diary = {
       id: loadedDiary.length + 1,
-      date: calendar,
+      date: currentDate,
       emotion: emotion,
-      content: value.split('\n')
+      content: value.split('\n'),
+      dayInfo: dayInfo
     };
 
     const newList = [...loadedDiary, postData];

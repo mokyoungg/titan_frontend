@@ -1,14 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 
+interface DayInfo {
+  today: number;
+  month: string;
+  day: string;
+}
+
 interface calendarState {
   show: boolean;
   selectDate: string;
+  dayInfo: DayInfo;
 }
 
 const initialState: calendarState = {
   show: false,
-  selectDate: ''
+  selectDate: '',
+  dayInfo: {
+    today: 0,
+    month: '',
+    day: ''
+  }
 };
 
 export const calendarSlice = createSlice({
@@ -20,11 +32,19 @@ export const calendarSlice = createSlice({
     },
     handleDate: (state, action: PayloadAction<string>) => {
       state.selectDate = action.payload;
+    },
+    handleDayInfo: (state, action) => {
+      console.log('action', action);
+      state.dayInfo = action.payload;
     }
   }
 });
 
-export const { showCalendar, handleDate } = calendarSlice.actions;
+export const {
+  showCalendar,
+  handleDate,
+  handleDayInfo
+} = calendarSlice.actions;
 
 export const calendar = (state: RootState) => state.handleCalendar;
 

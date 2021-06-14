@@ -1,33 +1,35 @@
 @import "../../styles/reset.scss";
 @import "../../styles/mixins";
 
-.card_wrap {
+.today_info_wrap {
     margin-top: 5%;
     width: 90%;
-    //height: 500px;
-    background-color: #fff;
+    height: 230px;
+    background-color: #fff;//#063DD9;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     transition: 0.4s;
+    //border: 2px solid #fff;
     //align-items: center;
     &:hover{
         background-color: #ED3A1E;
+
+        //border: 2px solid #ED3A1E;
     }
     .date_section {
         width: 90%;
-        //height: 20%;
-        //border: 1px solid red;
-        border-bottom: 5px solid #063DD9;
+        margin: 0 auto;
         display: flex;
+        border-bottom: 2px solid #063DD9;
         .today {
             width: 50%;
             height: 100%;
             //border: 1px solid yellow;
             font-weight: 800;
-            color: #063DD9;//#ED3A1E;
-            font-size: 140px;
+            color:#063DD9;//#ED3A1E;
+            font-size: 120px;//140px;
         }
         .day_info {
             width: 50%;
@@ -42,9 +44,9 @@
                 //border: 1px solid green;
                 color: #063DD9;//#fff;
                 font-weight: 800;
-                font-size: 35px;
+                font-size: 33px;//35px;
                 padding-top: 20px;
-                letter-spacing: -3px;
+                letter-spacing: -4px;
                 text-transform: uppercase;
             }
             .other_day{
@@ -52,31 +54,19 @@
                 height: 50%;
                 //border: 1px solid green;
                 font-weight: 800;
-                color: #dadada;//#fff;
+                color:#063DD9;
                 font-size: 60px;
                
             }
         }
         
     }
-    .start_btn_section {
-        width:100%;
-        margin-top: 5%;
-        //border: 1px solid red;
-        display: flex;
-        justify-content: flex-end;
-        background-color: transparent;
-        .diary_start_btn {
-            //height: 100px;
-            padding-right: 10%;
-            font-size: 40px;
-            font-weight: 800;
-            color:#063DD9;
-            width: 200px;
-            text-align: end;
-            background-color: transparent;
-            border:none;
-            cursor: pointer;
-        }
+    .start_section{
+        font-weight: 800;
+        font-size: 35px;
+        width: 90%;
+        margin: 0 auto;
+        color:#063DD9;
+        margin-top: 10px;
     }
 }

@@ -1,12 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
 
-type Emotion = {
-  emotion: string
-};
+interface List {
+  id: number;
+  date: string;
+  emotion: string;
+  content: string[];
+}
 
-const initialState: Emotion = {
-  emotion: 'great'
+interface Diary {
+  emotion: string;
+  list: List[];
+}
+
+const initialState: Diary = {
+  emotion: 'great',
+  list: []
 };
 
 export const diarySlice = createSlice({
@@ -17,11 +26,14 @@ export const diarySlice = createSlice({
       //console.log('state: ', state);
       //console.log('action: ', action);
       state.emotion = action.payload;
+    },
+    handleList: (state, action) => {
+      state.list = action.payload;
     }
   }
 });
 
-export const { handleEmotion } = diarySlice.actions;
+export const { handleEmotion, handleList } = diarySlice.actions;
 
 export const diary = (state: RootState) => state.diary;
 
