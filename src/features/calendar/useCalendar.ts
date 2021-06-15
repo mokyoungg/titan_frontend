@@ -14,10 +14,15 @@ const useCalendar = () => {
     day: ''
   });
 
+  // const strToDate = (str: string) => {
+  //   const sliceDate = str.slice(-str.length, str.indexOf('오') - 2);
+  //   const result: any[] = sliceDate.replace(/\s/g, '').split('.');
+  //   return new Date(result[0], result[1] - 1, result[2]);
+  // };
+
   const strToDate = (str: string) => {
-    const sliceDate = str.slice(-str.length, str.indexOf('오') - 2);
-    const result: any[] = sliceDate.replace(/\s/g, '').split('.');
-    return new Date(result[0], result[1] - 1, result[2]);
+    const sliceDate: any[] = str.split('-');
+    return new Date(sliceDate[0], sliceDate[1] - 1, sliceDate[2]);
   };
 
   const getDate = (str: string) => {

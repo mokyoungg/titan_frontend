@@ -12,8 +12,8 @@ const ReactDayPicker: React.FC = () => {
   const dispatch = useAppDispatch();
   const show = useAppSelector((state) => state.handleCalendar.show);
 
-  const [selectedDay, setSelectDay] = useState<any[]>([new Date()]);
-  //const [selectedDay, setSelectDay] = useState<any>(new Date());
+  //const [selectedDay, setSelectDay] = useState<any[]>([new Date()]);
+  const [selectedDay, setSelectDay] = useState<any>(new Date());
 
   // const [completedDays, setCompletedDays] = useState([
   //   new Date(2021, 4, 3),
@@ -21,7 +21,8 @@ const ReactDayPicker: React.FC = () => {
   // ]);
 
   useEffect(() => {
-    const date = selectedDay.toLocaleString();
+    //const date = selectedDay.toLocaleString();
+    const date = selectedDay.toISOString().split('T')[0];
     dispatch(handleDate(date));
   }, []);
 
@@ -47,7 +48,7 @@ const ReactDayPicker: React.FC = () => {
   };
 
   const handleDayClick = (day: object) => {
-    setSelectDay([day]);
+    setSelectDay(day);
   };
 
   if (!show) {
@@ -64,7 +65,9 @@ const ReactDayPicker: React.FC = () => {
         <div className="calendar_btn_section">
           <button
             className="handle_date_btn"
-            onClick={() => dispatch(handleDate(selectedDay.toLocaleString()))}
+            onClick={() =>
+              dispatch(handleDate(selectedDay.toISOString().split('T')[0]))
+            }
           >
             날짜로 이동
           </button>
