@@ -48,7 +48,7 @@ const useCalendar = () => {
       day: day
     });
 
-    console.log('da:', dateInfo);
+    //console.log('da:', dateInfo);
 
     dispatch(handleDayInfo({ today: today, month: month, day: day }));
   };
