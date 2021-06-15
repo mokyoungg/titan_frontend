@@ -31,18 +31,19 @@ interface Diary {
 const Main: React.FC = () => {
   const dispatch = useAppDispatch();
   const quotes = useAppSelector((state) => state.quotes.quotes);
-  const calendar = useAppSelector((state) => state.handleCalendar.selectDate);
+  const currentDate = useAppSelector(
+    (state) => state.handleCalendar.selectDate
+  );
   const weather = useAppSelector((state) => state.weather.weather);
-  const list = useAppSelector((state) => state.diary.list);
 
   const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
-  const [diary, setDiary] = useState<Diary>({
-    id: 0,
-    date: '',
-    emotion: '',
-    content: ['']
-  });
-  const [selectDay, setSelectDay] = useState<string>('');
+  // const [diary, setDiary] = useState<Diary>({
+  //   id: 0,
+  //   date: '',
+  //   emotion: '',
+  //   content: ['']
+  // });
+  // const [selectDay, setSelectDay] = useState<string>('');
   const [dayCheck, setDayCheck] = useState<boolean>(false);
 
   useEffect(() => {
@@ -54,27 +55,23 @@ const Main: React.FC = () => {
 
     if (loadedList) {
       const parsedList = JSON.parse(loadedList);
-      const newList = parsedList.map((el: Diary) => {
-        return { ...el, date: calendarToStr(el.date) };
-      });
-      setLoadedDiary(newList);
-      dispatch(handleList(newList));
-
-      const day = calendarToStr(calendar);
-
-      for (let i = 0; i < newList.length; i++) {
-        if (newList[i].date === day) {
-          setDayCheck(true);
-          setDiary(newList[i]);
-          break;
-        } else {
-          setDayCheck(false);
-        }
-      }
+      dispatch(handleList(parsedList));
     }
+    //  const day = calendarToStr(calendar);
 
-    setSelectDay(calendarToStr(calendar));
-  }, [calendar]);
+    //   for (let i = 0; i < newList.length; i++) {
+    //     if (newList[i].date === day) {
+    //       setDayCheck(true);
+    //       setDiary(newList[i]);
+    //       break;
+    //     } else {
+    //       setDayCheck(false);
+    //     }
+    //   }
+    // }
+
+    // setSelectDay(calendarToStr(calendar));
+  }, []);
 
   const calendarToStr = (str: string) => {
     const result = str.slice(-str.length, str.indexOf('오') - 2);

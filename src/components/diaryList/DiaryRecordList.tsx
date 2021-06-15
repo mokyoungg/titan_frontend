@@ -9,9 +9,18 @@ const DiaryList: React.FC = () => {
 
   const renderList = () => {
     if (list) {
-      return list.map((el, key) => {
-        return <DiaryRecord record={el} key={el.id} />;
-      });
+      if (list.length === 1) {
+        return <DiaryRecord record={list[0]} />;
+      } else if (list.length > 1) {
+        const newList = list.slice().sort((a, b) => {
+          let aNum = parseInt(a.date.replaceAll('-', ''));
+          let bNum = parseInt(b.date.replaceAll('-', ''));
+          return bNum - aNum;
+        });
+        return newList.map((el, key) => {
+          return <DiaryRecord record={el} key={el.id} />;
+        });
+      }
     } else {
       return null;
     }
@@ -21,3 +30,7 @@ const DiaryList: React.FC = () => {
 };
 
 export default DiaryList;
+
+// return list.map((el, key) => {
+//   return <DiaryRecord record={el} key={el.id} />;
+// });
