@@ -34,7 +34,6 @@ export const calendarSlice = createSlice({
       state.selectDate = action.payload;
     },
     handleDayInfo: (state, action) => {
-      console.log('action', action);
       state.dayInfo = action.payload;
     }
   }

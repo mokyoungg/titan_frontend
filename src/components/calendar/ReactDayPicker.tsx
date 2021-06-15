@@ -13,10 +13,12 @@ const ReactDayPicker: React.FC = () => {
   const show = useAppSelector((state) => state.handleCalendar.show);
 
   const [selectedDay, setSelectDay] = useState<any[]>([new Date()]);
-  const [completedDays, setCompletedDays] = useState([
-    new Date(2021, 4, 3),
-    new Date(2021, 4, 12)
-  ]);
+  //const [selectedDay, setSelectDay] = useState<any>(new Date());
+
+  // const [completedDays, setCompletedDays] = useState([
+  //   new Date(2021, 4, 3),
+  //   new Date(2021, 4, 12)
+  // ]);
 
   useEffect(() => {
     const date = selectedDay.toLocaleString();
@@ -24,16 +26,16 @@ const ReactDayPicker: React.FC = () => {
   }, []);
 
   const modifiers = {
-    completedDay: completedDays,
+    //completedDay: completedDays,
     sunday: { daysOfWeek: [0] },
     saturday: { daysOfWeek: [6] }
   };
 
   const modifiersStyles = {
-    completedDay: {
-      //background: 'white',
-      color: 'orange'
-    },
+    // completedDay: {
+    //   //background: 'white',
+    //   color: 'orange'
+    // },
     sunday: {
       color: 'red'
       //background: 'white'
