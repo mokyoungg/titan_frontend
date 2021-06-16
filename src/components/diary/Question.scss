@@ -3,32 +3,44 @@
 
 .question_wrap {
     @include wrap;
-    //background-color: #fff;
-    border: 1px solid blue;
+    background-color: #ED3A1E;;
+    //border: 1px solid blue;
     justify-content: center;
     align-items: center;
+    position: relative;
+    .progress_bar{
+        width: 80%;
+        height:5px;
+        background: #fff;
+        position: absolute;
+        top: 5%;
+        left: 10%;
+        .current_progress2{
+            width:66%;
+            height:100%;
+            background-color: #2c2c2c;
+            animation-name: progress2;
+            animation-duration: 0.4s;
+        }
+    }
     .question_header_section{
-        height: 100px;
-        //border: 1px solid red;
+        width: 80%;
         display: flex;
         justify-content: center;
         align-items: center;
-        //background-color: #063DD9;;
+        //margin-top: 15%;
         p {
-            font-weight: 600;
-            font-size: 20px;
-            //border: 1px solid red;
-            //padding: 5px;
+            font-weight: bold;
+            font-size: 28px;
             color: #fff;
-            text-decoration: underline;
-            width: 90%;
+            //width: 80%;
         }
     }
     .question_answer_section{
-        //border: 1px solid red;
-        height:500px;
-        width: 90%;
-        background-color: #fff;
+        height:400px;
+        width: 80%;
+        margin-top: 50px;
+        //padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -38,21 +50,50 @@
             text-transform: uppercase;
         }
         .answer {
-            width: 90%;
+            width: 100%;
             background-color: transparent;
             border: none;
             outline: none;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
             font-size: 20px;
-            height: 80%;
+            height: 100%;
+           
         }
     }
-    .post_btn {
-        width: 90%;
-        height: 30px;
-        background: #ED3A1E;
-        font-size: 15px;
+    // .post_btn {
+    //     width: 90%;
+    //     height: 30px;
+    //     background: #ED3A1E;
+    //     font-size: 15px;
+    //     cursor: pointer;
+    //     margin-top: 20px;
+    //     border: none;
+    // }
+    .complete_btn {
+        width:50px;
+        height:50px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        position: absolute;
+        right: 10%;
+        bottom: 3%;
+        transition: 0.4s;
         cursor: pointer;
-        margin-top: 20px;
-        border: none;
+        &:hover {
+            background-color: gold;
+        }
+    }
+}
+
+@keyframes progress2 {
+    from{
+        width:33%;
+    }
+    to {
+        width:66%;
     }
 }

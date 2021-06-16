@@ -3,22 +3,44 @@
 
 .emotion_wrap {
     @include wrap;
-    background-color: #fff;
+    background-color: #ED3A1E;//#FF4800;
     justify-content: center;
-    border: 1px solid blue;
+    //border: 1px solid blue;
     position: relative;
-    .next_pg_btn {
+    .progress_bar{
+        width: 80%;
+        height:5px;
+        background: #fff;
         position: absolute;
-        top: 30px;
-        right: 30px;
-        background-color: transparent;
-        //border:1px solid #dadada;
-        font-size: 30px;
-        //border-radius: 20px;
-        border: none;
-        outline:none;
-        cursor: pointer;
+        top: 5%;
+        left: 10%;
+        .current_progress{
+            width:33%;
+            height:100%;
+            background-color: #2c2c2c;
+            animation-name: progress;
+            animation-duration: 0.4s;
+        }
     }
+    .next_pg_btn {
+        background: transparent;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        border-radius: 50px;
+        position: absolute;
+        //top: 5%;
+        bottom: 5%;
+        right: 10%;//5%;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover{
+            background-color: gold;
+        }
+        }
     .emotion_header{
         //border: 1px solid red;
         display: flex;
@@ -27,11 +49,11 @@
         margin-bottom: 30px;
         .emotion_question{
             width: 80%;
-            color: #2c2c2c;//#063dd9;
+            color: #fff;//#2c2c2c;//#063dd9;
             text-transform: uppercase;
             text-align: center;
-            font-weight: 600;
-            font-size: 25px;
+            font-weight: bold;//600;
+            font-size: 30px;
         }
     }
     .emotion_section {
@@ -55,9 +77,9 @@
             }
         }
         .emotion_text{
-            font-weight: 800;
+            font-weight: bold;//800;
             font-size: 30px;
-            color: #2c2c2c;
+            color: #fff;//#2c2c2c;
             //text-transform: uppercase; 
             &::first-letter{
                 text-transform: uppercase;
@@ -73,8 +95,8 @@
         .emotion_arr {
             //width: 80%;
             //height: 80px;
-            border: 1px solid #dadada;
-            border-radius: 20px;
+            //border: 1px solid #dadada;
+            //border-radius: 20px;
             font-size: 60px;
             display: flex;
             align-items: center;
@@ -87,6 +109,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+              
                 //border-left: 1px solid #dadada;
                 &:hover {
                     svg:first-child {
@@ -101,5 +124,15 @@
               
             }
         }
+    }
+}
+
+
+@keyframes progress {
+    from{
+        width:0%;
+    }
+    to {
+        width:33%;
     }
 }

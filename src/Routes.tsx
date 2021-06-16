@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 import Emotion from './components/diary/Emotion';
 import Question from './components/diary/Question';
+import DiarySlider from './components/diary/DiarySlider';
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route exact path="/main" component={Main} />
         <Route exact path="/emotion" component={Emotion} />
         <Route exact path="/question" component={Question} />
+        <Route exact path="/diary" component={DiarySlider} />
       </Switch>
     </BrowserRouter>
   );

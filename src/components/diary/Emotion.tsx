@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import './Emotion.scss';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-import { BiHappyAlt, BiAngry, BiSmile, BiMeh, BiSad } from 'react-icons/bi';
+import {
+  BiHappyAlt,
+  BiAngry,
+  BiSmile,
+  BiMeh,
+  BiSad,
+  BiRightArrowAlt
+} from 'react-icons/bi';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { handleEmotion } from '../../features/diary/diarySlice';
@@ -39,11 +46,11 @@ const Emotion: React.FC = () => {
 
   return (
     <div className="emotion_wrap">
-      <Link to="/question">
-        <button className="next_pg_btn">{'>'}</button>
-      </Link>
+      <div className="progress_bar">
+        <div className="current_progress"></div>
+      </div>
       <div className="emotion_header">
-        <div className="emotion_question">Guest, how do you fell today?</div>
+        <div className="emotion_question">Guest, how do you feel today?</div>
       </div>
       <div className="emotion_section">
         <div className="emotion_icon">
@@ -62,6 +69,13 @@ const Emotion: React.FC = () => {
           </IconContext.Provider>
         </div>
       </div>
+      <Link to="/question">
+        <div className="next_pg_btn">
+          <IconContext.Provider value={{ color: '#2c2c2c' }}>
+            <BiRightArrowAlt />
+          </IconContext.Provider>
+        </div>
+      </Link>
     </div>
   );
 };
