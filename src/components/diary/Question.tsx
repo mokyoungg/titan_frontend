@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Question.scss';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { IconContext } from 'react-icons';
+import { BiCheck } from 'react-icons/bi';
 
+import { RouteComponentProps, withRouter } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 type QuestionComponentProps = RouteComponentProps;
@@ -82,14 +84,18 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
 
   return (
     <div className="question_wrap">
+      <div className="progress_bar">
+        <div className="current_progress2"></div>
+      </div>
       <div className="question_header_section">
         <p>
-          Get specific, Guest! Use detail to describe what you're feeling
-          greateful for.
+          {/* Get specific, Guest! Use detail to describe what you're feeling
+          greateful for. */}
+          오늘을 기분좋게 만들어주는 것은?
         </p>
       </div>
       <div className="question_answer_section">
-        <div className="answer_header">3 Things i am grateful for.</div>
+        {/* <div className="answer_header">3 Things i am grateful for.</div> */}
         <textarea
           className="answer"
           value={value}
@@ -97,9 +103,14 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
           onKeyUp={getEnter}
         ></textarea>
       </div>
-      <button className="post_btn" onClick={() => postDiary()}>
+      {/* <button className="post_btn" onClick={() => postDiary()}>
         Done
-      </button>
+      </button> */}
+      <div className="complete_btn">
+        <IconContext.Provider value={{ color: '#2c2c2c' }}>
+          <BiCheck />
+        </IconContext.Provider>
+      </div>
     </div>
   );
 };

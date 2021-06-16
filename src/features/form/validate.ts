@@ -4,7 +4,7 @@ export default function validate(values: formInterface): formInterface {
   let errors: formInterface = {
     email: '',
     password: '',
-    password2: '',
+    password2: ''
   };
 
   if (
