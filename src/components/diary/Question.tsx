@@ -6,7 +6,9 @@ import { BiCheck } from 'react-icons/bi';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-type QuestionComponentProps = RouteComponentProps;
+interface QuestionComponentProps extends RouteComponentProps {
+  question: any;
+} //= RouteComponentProps;
 
 const DIARY_LS = 'diary_list';
 
@@ -23,8 +25,10 @@ interface Diary {
   content: string[];
   dayInfo: DayInfo;
 }
-
-const Question: React.FC<QuestionComponentProps> = ({ history }) => {
+//history
+const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
+  // console.log(props);
+  // console.log(props.question);
   const dispatch = useAppDispatch();
   const currentDate = useAppSelector(
     (state) => state.handleCalendar.selectDate
@@ -40,10 +44,10 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
 
     if (loadedList) {
       const parsedList = JSON.parse(loadedList);
-      console.log(parsedList);
+      //console.log(parsedList);
       setLoadedDiary(parsedList);
     } else {
-      console.log('없음');
+      //console.log('없음');
     }
   }, []);
 
@@ -91,7 +95,7 @@ const Question: React.FC<QuestionComponentProps> = ({ history }) => {
         <p>
           {/* Get specific, Guest! Use detail to describe what you're feeling
           greateful for. */}
-          오늘을 기분좋게 만들어주는 것은?
+          {props.question}
         </p>
       </div>
       <div className="question_answer_section">
