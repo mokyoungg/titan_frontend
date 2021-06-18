@@ -28,6 +28,9 @@ const DiarySlider: React.FC = () => {
   const [prevRef, setPrevRef] = useState<any>();
   const [nextRef, setNextRef] = useState<any>();
 
+  const questionList = useAppSelector((state) => state.diary.questionList);
+  const answer = useAppSelector((state) => state.diary.answer);
+
   useEffect(() => {
     //useState를 사용하지 않으면 ref로 지정해도
     //기능하지 않는다. 이 부분에 대해선 공부가 더 필요하다.
@@ -35,8 +38,6 @@ const DiarySlider: React.FC = () => {
     setPrevRef(navigationPrevRef);
     setNextRef(navigationNextRef);
   }, []);
-
-  const questionList = useAppSelector((state) => state.diary.questionList);
 
   const renderQuestion = () => {
     return questionList.map((el: string, index) => {
