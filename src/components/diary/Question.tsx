@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 interface QuestionComponentProps extends RouteComponentProps {
   question: any;
+  index: number;
 } //= RouteComponentProps;
 
 const DIARY_LS = 'diary_list';
@@ -27,8 +28,6 @@ interface Diary {
 }
 //history
 const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
-  // console.log(props);
-  // console.log(props.question);
   const dispatch = useAppDispatch();
   const currentDate = useAppSelector(
     (state) => state.handleCalendar.selectDate
@@ -44,7 +43,6 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
 
     if (loadedList) {
       const parsedList = JSON.parse(loadedList);
-      //console.log(parsedList);
       setLoadedDiary(parsedList);
     } else {
       //console.log('없음');
@@ -88,9 +86,9 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
 
   return (
     <div className="question_wrap">
-      <div className="progress_bar">
+      {/* <div className="progress_bar">
         <div className="current_progress2"></div>
-      </div>
+      </div> */}
       <div className="question_header_section">
         <p>
           {/* Get specific, Guest! Use detail to describe what you're feeling
@@ -107,14 +105,13 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
           onKeyUp={getEnter}
         ></textarea>
       </div>
-      {/* <button className="post_btn" onClick={() => postDiary()}>
-        Done
-      </button> */}
-      <div className="complete_btn">
-        <IconContext.Provider value={{ color: '#2c2c2c' }}>
-          <BiCheck />
-        </IconContext.Provider>
-      </div>
+      {props.index === 2 && (
+        <div className="complete_btn">
+          <IconContext.Provider value={{ color: '#000' }}>
+            <BiCheck />
+          </IconContext.Provider>
+        </div>
+      )}
     </div>
   );
 };

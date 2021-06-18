@@ -15,14 +15,14 @@
         top: 5%;
         left: 10%;
         .current_progress{
-            width:33%;
+            width:20%;
             height:100%;
             background-color: #2c2c2c;
             animation-name: progress;
             animation-duration: 0.4s;
         }
     }
-    .next_pg_btn {
+    .cancel_btn {
         background: transparent;
         height: 50px;
         width: 50px;
@@ -34,7 +34,7 @@
         position: absolute;
         //top: 5%;
         bottom: 5%;
-        right: 10%;//5%;
+        left: 10%;//5%;
         cursor: pointer;
         transition: 0.4s;
         &:hover{
@@ -133,6 +133,6 @@
         width:0%;
     }
     to {
-        width:33%;
+        width:20%;
     }
 }

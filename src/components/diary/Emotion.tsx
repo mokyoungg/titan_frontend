@@ -8,7 +8,8 @@ import {
   BiSmile,
   BiMeh,
   BiSad,
-  BiRightArrowAlt
+  BiXCircle,
+  BiX
 } from 'react-icons/bi';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -46,9 +47,9 @@ const Emotion: React.FC = () => {
 
   return (
     <div className="emotion_wrap">
-      <div className="progress_bar">
+      {/* <div className="progress_bar">
         <div className="current_progress"></div>
-      </div>
+      </div> */}
       <div className="emotion_header">
         <div className="emotion_question">Guest, how do you feel today?</div>
       </div>
@@ -64,18 +65,16 @@ const Emotion: React.FC = () => {
       </div>
       <div className="emotion_selection">
         <div className="emotion_arr">
-          <IconContext.Provider value={{ color: '#2c2c2c' }}>
+          <IconContext.Provider value={{ color: '#000' }}>
             {renderList(emotion)}
           </IconContext.Provider>
         </div>
       </div>
-      <Link to="/question">
-        <div className="next_pg_btn">
-          <IconContext.Provider value={{ color: '#2c2c2c' }}>
-            <BiRightArrowAlt />
-          </IconContext.Provider>
-        </div>
-      </Link>
+      <div className="cancel_btn">
+        <IconContext.Provider value={{ color: '#000' }}>
+          <BiX />
+        </IconContext.Provider>
+      </div>
     </div>
   );
 };
