@@ -6,7 +6,9 @@ import { BiCheck } from 'react-icons/bi';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-interface QuestionComponentProps extends RouteComponentProps {
+import { handleAnswer } from '../../features/diary/diarySlice';
+
+interface QuestionComponentProps extends RouteComponentProps<any> {
   question: any;
   index: number;
 } //= RouteComponentProps;
@@ -23,17 +25,24 @@ interface Diary {
   id: number;
   date: string;
   emotion: string;
-  content: string[];
+  //content: string[];
   dayInfo: DayInfo;
+  list: any;
 }
-//history
-const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
+//history와 부모 컴포넌트에서 내려오는 props를 같이 사용하려면
+//(props, {history}) 가 아닌 props로 전부를 받아와 사용해야한다.
+//(props, {history}) 형태의 경우, 두번째 인자의 값을 undefined로 받음.
+const Question: React.FC<QuestionComponentProps> = (props) => {
+  //console.log('history', history);
+  //console.log('props:', props);
+
   const dispatch = useAppDispatch();
   const currentDate = useAppSelector(
     (state) => state.handleCalendar.selectDate
   );
   const emotion = useAppSelector((state) => state.diary.emotion);
   const dayInfo = useAppSelector((state) => state.handleCalendar.dayInfo);
+  const answer = useAppSelector((state) => state.diary.answer);
 
   const [value, setValue] = useState<string>('1. ');
   const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
@@ -67,6 +76,8 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
+    const question = props.question;
+    dispatch(handleAnswer({ question: question, value: e.target.value }));
   };
 
   const postDiary = () => {
@@ -74,14 +85,15 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
       id: loadedDiary.length + 1,
       date: currentDate,
       emotion: emotion,
-      content: value.split('\n'),
-      dayInfo: dayInfo
+      //content: value.split('\n'),
+      dayInfo: dayInfo,
+      list: answer
     };
 
     const newList = [...loadedDiary, postData];
 
     localStorage.setItem(DIARY_LS, JSON.stringify(newList));
-    history.push('/main');
+    props.history.push('/main');
   };
 
   return (
@@ -106,7 +118,7 @@ const Question: React.FC<QuestionComponentProps> = (props, { history }) => {
         ></textarea>
       </div>
       {props.index === 2 && (
-        <div className="complete_btn">
+        <div className="complete_btn" onClick={() => postDiary()}>
           <IconContext.Provider value={{ color: '#000' }}>
             <BiCheck />
           </IconContext.Provider>

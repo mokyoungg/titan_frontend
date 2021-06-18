@@ -114,7 +114,7 @@ const Main: React.FC = () => {
         ) : null}
       </div>
       <TodayInfo />
-      <DiaryRecordList />
+      {/* <DiaryRecordList /> */}
     </div>
   );
 };

@@ -37,7 +37,7 @@ const TodayInfo: React.FC = () => {
     <>
       {!dayCheck ? (
         <div className="today_info_wrap">
-          <Link to="/emotion" style={{ textDecoration: 'none', width: '100%' }}>
+          <Link to="/diary" style={{ textDecoration: 'none', width: '100%' }}>
             <div className="date_section">
               <div className="today">
                 {dateInfo.today < 10
