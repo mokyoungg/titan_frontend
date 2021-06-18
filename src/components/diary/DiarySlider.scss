@@ -2,21 +2,69 @@
 
 .prev {
     position: absolute;
-    top: 0;
-    background: #fff;
+    //background: #fff;
     width: 50px;
     height: 50px;
     font-size: 50px;
     z-index: 100;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    position: absolute;
+    //top: 5%;
+    bottom: 5%;
+    left: 10%;//5%;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover{
+        background-color: gold;
+    }
 }
 .next {
     position: absolute;
-    top: 100;
-    top: 0;
-    background: #fff;
+    //background: #fff;
     width: 50px;
     height: 50px;
     font-size: 50px;
     z-index: 100;
-    right:0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    position: absolute;
+    //top: 5%;
+    bottom: 5%;
+    right: 10%;//5%;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover{
+        background-color: gold;
+    }
 }
+
+//slider가 처음 또는 마지막일때 css
+.swiper-button-disabled{
+    //background: red;
+    display: none;
+}
+
+//!important를 통해 기존 라이브러리의
+//css 스타일을 수정한다.
+.swiper-pagination.swiper-pagination-progressbar{
+    background:#fff;
+    height:5px !important;
+    position: absolute;
+    top:5% !important;
+    left:10% !important;
+    width:80% !important;
+    .swiper-pagination-progressbar-fill{
+        background-color: #2c2c2c;
+    }
+}
+
+// .swiper-container-horizontal>.swiper-pagination-progressbar,.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{
+//     top: 5%;
+// }

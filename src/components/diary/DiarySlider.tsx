@@ -3,7 +3,7 @@ import './DiarySlider.scss';
 import Emotion from './Emotion';
 import Question from './Question';
 import { IconContext } from 'react-icons';
-import { BiCheck } from 'react-icons/bi';
+import { BiCheck, BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 
 import { useAppSelector } from '../../app/hooks';
 
@@ -12,13 +12,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // swiper/swiper.min.css 를 사용하지 않으면
 // 슬라이더에 들어가는 컴포넌트가 세로로 이어져 기능이 구현되지 않는다.
 import 'swiper/swiper.min.css';
-import 'swiper/components/navigation/navigation.min.css';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation } from 'swiper/core';
+import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 
 // install Swiper modules
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Pagination]);
 
 const DiarySlider: React.FC = () => {
   const navigationPrevRef = React.useRef(null);
@@ -41,7 +42,7 @@ const DiarySlider: React.FC = () => {
     return questionList.map((el: string, index) => {
       return (
         <SwiperSlide key={index}>
-          <Question question={el} />
+          <Question question={el} index={index} />
         </SwiperSlide>
       );
     });
@@ -52,32 +53,21 @@ const DiarySlider: React.FC = () => {
       <Swiper
         slidesPerView={1}
         spaceBetween={0}
-        //slidesPerColumnFill="row"
-
         navigation={{
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current
-          //hideOnClick: true
-          //hiddenClass: 'swiper-button-hidden'
         }}
-
-        //onSwiper={(swiper) => console.log('swiper', swiper)}
-        //onSlideChange
-        // onNavigationHide={(swiper) => {
-        //   if (swiper.activeIndex == 0) {
-        //   }
-        // }}
-        //onNavigationShow={(swiper) => console.log(swiper.activeIndex)}
+        pagination={{ type: 'progressbar' }}
       >
         <SwiperSlide>
           <Emotion />
         </SwiperSlide>
         {renderQuestion()}
         <div className="prev" ref={navigationPrevRef}>
-          <BiCheck />
+          <BiLeftArrowAlt />
         </div>
         <div className="next " ref={navigationNextRef}>
-          <BiCheck />
+          <BiRightArrowAlt />
         </div>
       </Swiper>
     </>
