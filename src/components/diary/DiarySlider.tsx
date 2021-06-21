@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './DiarySlider.scss';
 import Emotion from './Emotion';
 import Question from './Question';
-import { IconContext } from 'react-icons';
-import { BiCheck, BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
+//import { IconContext } from 'react-icons';
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 
 import { useAppSelector } from '../../app/hooks';
 
@@ -29,7 +29,7 @@ const DiarySlider: React.FC = () => {
   const [nextRef, setNextRef] = useState<any>();
 
   const questionList = useAppSelector((state) => state.diary.questionList);
-  const answer = useAppSelector((state) => state.diary.answer);
+  const answer = useAppSelector((state) => state.diary.answerList);
 
   useEffect(() => {
     //useState를 사용하지 않으면 ref로 지정해도

@@ -10,7 +10,8 @@ const TodayInfo: React.FC = () => {
   const currentDate = useAppSelector(
     (state) => state.handleCalendar.selectDate
   );
-  const list = useAppSelector((state) => state.diary.list);
+  //const list = useAppSelector((state) => state.diary.list);
+  const list = useAppSelector((state) => state.list.totalList);
 
   const { getDate, dateInfo } = useCalendar();
 

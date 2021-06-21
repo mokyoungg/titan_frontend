@@ -4,8 +4,9 @@ import DiaryRecord from './DiaryRecord';
 
 import { useAppSelector } from '../../app/hooks';
 
-const DiaryList: React.FC = () => {
-  const list = useAppSelector((state) => state.diary.list);
+const DiaryRecordList: React.FC = () => {
+  //const list = useAppSelector((state) => state.diary.list);
+  const list = useAppSelector((state) => state.list.totalList);
 
   const renderList = () => {
     if (list) {
@@ -29,7 +30,7 @@ const DiaryList: React.FC = () => {
   return <div className="diary_list_wrap">{renderList()}</div>;
 };
 
-export default DiaryList;
+export default DiaryRecordList;
 
 // return list.map((el, key) => {
 //   return <DiaryRecord record={el} key={el.id} />;
