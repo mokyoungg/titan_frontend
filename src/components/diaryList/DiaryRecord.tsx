@@ -14,7 +14,9 @@ const DiaryRecord: React.FC<DiaryRecordProps> = (props) => {
         <div className="list_day">{record.dayInfo.day}</div>
         <div className="list_date">{record.dayInfo.today}</div>
       </div>
-      <div className="list_content_box">{record.content[0]}</div>
+      <div className="list_content_box">
+        {record.answerList['오늘의 다짐'][0]}
+      </div>
     </div>
   );
 };

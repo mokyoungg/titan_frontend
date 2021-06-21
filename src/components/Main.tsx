@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './Main.scss';
+import { Link } from 'react-router-dom';
+
 import CalendarIcon from './icons/CalendarIcon';
 import WeatherIcon from './icons/WeatherIcon';
 import TodayInfo from '../components/todayInfo/TodayInfo';
 import DiaryRecordList from '../components/diaryList/DiaryRecordList';
-
-import { Link } from 'react-router-dom';
+import ReactDayPicker from './calendar/ReactDayPicker';
 
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+
 import { fetchQuotes } from '../features/quotes/fetchQuotesSlice';
-
-import ReactDayPicker from './calendar/ReactDayPicker';
 import { showCalendar } from '../features/calendar/calendarSlice';
-
-import { handleList } from './../features/diary/diarySlice';
+import { handleList } from '../features/fetchList/fetchListSlice';
 
 // {}가 없을 경우, type error 발생
 //import fetchWeather from '../features/weather/fetchWeatherSlice';
@@ -35,16 +34,7 @@ const Main: React.FC = () => {
     (state) => state.handleCalendar.selectDate
   );
   const weather = useAppSelector((state) => state.weather.weather);
-
-  const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
-  // const [diary, setDiary] = useState<Diary>({
-  //   id: 0,
-  //   date: '',
-  //   emotion: '',
-  //   content: ['']
-  // });
-  // const [selectDay, setSelectDay] = useState<string>('');
-  const [dayCheck, setDayCheck] = useState<boolean>(false);
+  const list = useAppSelector((state) => state.list.totalList);
 
   useEffect(() => {
     const randomNum = getRanNum();
@@ -57,26 +47,7 @@ const Main: React.FC = () => {
       const parsedList = JSON.parse(loadedList);
       dispatch(handleList(parsedList));
     }
-    //  const day = calendarToStr(calendar);
-
-    //   for (let i = 0; i < newList.length; i++) {
-    //     if (newList[i].date === day) {
-    //       setDayCheck(true);
-    //       setDiary(newList[i]);
-    //       break;
-    //     } else {
-    //       setDayCheck(false);
-    //     }
-    //   }
-    // }
-
-    // setSelectDay(calendarToStr(calendar));
   }, []);
-
-  const calendarToStr = (str: string) => {
-    const result = str.slice(-str.length, str.indexOf('오') - 2);
-    return result;
-  };
 
   const getRanNum = () => {
     const randomNum = Math.random() * 1400;
@@ -114,7 +85,7 @@ const Main: React.FC = () => {
         ) : null}
       </div>
       <TodayInfo />
-      {/* <DiaryRecordList /> */}
+      <DiaryRecordList />
     </div>
   );
 };

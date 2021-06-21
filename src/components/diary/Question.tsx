@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Question.scss';
+import { RouteComponentProps, withRouter } from 'react-router';
 import { IconContext } from 'react-icons';
 import { BiCheck } from 'react-icons/bi';
 
-import { RouteComponentProps, withRouter } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { handleAnswer } from '../../features/diary/diarySlice';
+import { ListInterface } from '../../features/fetchList/list.model';
 
 interface QuestionComponentProps extends RouteComponentProps<any> {
   question: any;
@@ -15,37 +16,20 @@ interface QuestionComponentProps extends RouteComponentProps<any> {
 
 const DIARY_LS = 'diary_list';
 
-interface DayInfo {
-  today: number;
-  month: string;
-  day: string;
-}
-
-interface Diary {
-  id: number;
-  date: string;
-  emotion: string;
-  //content: string[];
-  dayInfo: DayInfo;
-  list: any;
-}
 //history와 부모 컴포넌트에서 내려오는 props를 같이 사용하려면
 //(props, {history}) 가 아닌 props로 전부를 받아와 사용해야한다.
 //(props, {history}) 형태의 경우, 두번째 인자의 값을 undefined로 받음.
 const Question: React.FC<QuestionComponentProps> = (props) => {
-  //console.log('history', history);
-  //console.log('props:', props);
-
   const dispatch = useAppDispatch();
   const currentDate = useAppSelector(
     (state) => state.handleCalendar.selectDate
   );
   const emotion = useAppSelector((state) => state.diary.emotion);
   const dayInfo = useAppSelector((state) => state.handleCalendar.dayInfo);
-  const answer = useAppSelector((state) => state.diary.answer);
+  const answer = useAppSelector((state) => state.diary.answerList);
 
   const [value, setValue] = useState<string>('1. ');
-  const [loadedDiary, setLoadedDiary] = useState<Diary[]>([]);
+  const [loadedDiary, setLoadedDiary] = useState<ListInterface[]>([]);
 
   useEffect(() => {
     const loadedList = localStorage.getItem(DIARY_LS);
@@ -81,13 +65,12 @@ const Question: React.FC<QuestionComponentProps> = (props) => {
   };
 
   const postDiary = () => {
-    const postData: Diary = {
+    const postData: ListInterface = {
       id: loadedDiary.length + 1,
       date: currentDate,
       emotion: emotion,
-      //content: value.split('\n'),
       dayInfo: dayInfo,
-      list: answer
+      answerList: answer
     };
 
     const newList = [...loadedDiary, postData];
