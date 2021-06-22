@@ -6,11 +6,13 @@ import { ListInterface } from './list.model';
 interface fetchList {
   totalList: ListInterface[];
   selectList: ListInterface | any;
+  todayList: ListInterface | any;
 }
 
 const initialState: fetchList = {
   totalList: [],
-  selectList: {}
+  selectList: {},
+  todayList: {}
 };
 
 export const fetchListSlice = createSlice({
@@ -19,11 +21,18 @@ export const fetchListSlice = createSlice({
   reducers: {
     handleList: (state, action) => {
       state.totalList = action.payload;
+    },
+    handleSelectList: (state, action) => {
+      //console.log('action', action);
+      state.selectList = action.payload;
+    },
+    handleTodayList: (state, action) => {
+      state.todayList = action.payload;
     }
   }
 });
 
-export const { handleList } = fetchListSlice.actions;
+export const { handleList, handleSelectList } = fetchListSlice.actions;
 
 export const list = (state: RootState) => state.list;
 
