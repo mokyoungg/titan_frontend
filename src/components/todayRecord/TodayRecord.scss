@@ -1,0 +1,27 @@
+@import "../../styles/reset.scss";
+
+.today_record_wrap {
+    //margin-top: 5%;
+    width: 90%;
+    //height: 230px;
+    //background-color: #fff;//#ED3A1E;//#fff;//#063DD9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;//center;
+    .answer_list_container{
+        margin: 10px;
+        .list_question{
+            font-weight: bold;
+            //color: #2c2c2c;
+            font-size: 15px;
+            margin-bottom: 10px;
+            //font-family: 'Cormorant', serif;
+        }
+        .list_answer{
+            font-size: 12px;
+            font-weight: 600;
+            //font-family: 'Cormorant', serif;
+        }
+    }
+}

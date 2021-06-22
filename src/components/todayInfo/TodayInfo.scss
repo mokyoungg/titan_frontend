@@ -4,18 +4,18 @@
 .today_info_wrap {
     margin-top: 5%;
     width: 90%;
-    height: 230px;
+    //height: 230px;
     background-color: #fff;//#063DD9;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     transition: 0.4s;
+    padding-bottom: 10px;
     //border: 2px solid #fff;
     //align-items: center;
     &:hover{
         background-color: #ED3A1E;
-
         //border: 2px solid #ED3A1E;
     }
     .date_section {
