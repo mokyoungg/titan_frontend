@@ -40,7 +40,8 @@ const initialState: DiaryData = {
     '내가 감사하게 생각하는 것들': ['1. '],
     '오늘을 기분좋게 만들어주는 것은?': ['1. '],
     '오늘의 다짐': ['1. ']
-  }
+  },
+  edit: false
 };
 
 export const diarySlice = createSlice({
@@ -66,11 +67,16 @@ export const diarySlice = createSlice({
         ...state.answerList,
         [question]: value.split('\n')
       };
+    },
+    handleEdit: (state, action: any) => {
+      state.edit = !state.edit;
+      // state.emotion = action.payload.emotion;
+      // state.answerList = action.payload.answerList;
     }
   }
 });
 
-export const { handleEmotion, handleAnswer } = diarySlice.actions;
+export const { handleEmotion, handleAnswer, handleEdit } = diarySlice.actions;
 
 export const diary = (state: RootState) => state.diary;
 

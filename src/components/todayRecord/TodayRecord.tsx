@@ -21,6 +21,8 @@ const TodayRecord: React.FC = () => {
     });
   };
 
+  console.log('select', selectList);
+
   const renderAnswer = (question: string, parentIndex: any) => {
     //console.log(typeof parentIndex);
     //console.log('parentIndex', parentIndex);

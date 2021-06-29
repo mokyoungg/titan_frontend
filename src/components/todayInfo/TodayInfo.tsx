@@ -36,9 +36,6 @@ const TodayInfo: React.FC = () => {
     }
   }, [currentDate, list]);
 
-  console.log(dayCheck);
-  console.log(list);
-
   return (
     // <>
     // {!dayCheck ? (

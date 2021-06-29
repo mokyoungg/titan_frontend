@@ -3,6 +3,7 @@ export interface DiaryData {
   questionList: string[];
   //list: List[]; // 전체 다이어리 리스트를 관리하는 state 위치에 대해 고민이 필요하다.
   answerList: AnswerList;
+  edit: boolean;
 }
 
 interface List {
