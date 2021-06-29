@@ -5,7 +5,6 @@ import DiaryRecord from './DiaryRecord';
 import { useAppSelector } from '../../app/hooks';
 
 const DiaryRecordList: React.FC = () => {
-  //const list = useAppSelector((state) => state.diary.list);
   const list = useAppSelector((state) => state.list.totalList);
 
   const renderList = () => {
