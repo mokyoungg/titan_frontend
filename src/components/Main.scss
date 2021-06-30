@@ -7,7 +7,7 @@
     justify-content: flex-start;
     position: relative;
     overflow-x: hidden;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     .main_header {
         border-bottom: 2px solid #fff;
         width: 90%;
@@ -16,13 +16,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .weather_section {
-            display: flex;
-            align-items: center;
-            color: #fff;
-            font-weight: 800;
-            margin-left:30%;
-        }
         .greeting {
             color: #fff;
             font-size: 20px;
@@ -31,41 +24,6 @@
         .calendar_btn {
             color: #fff;
             cursor: pointer;
-        }
-    }
-    
-    .quotes_section{
-        //border: 1px solid red;
-        //border-bottom: 2px solid #fff;
-        width: 90%;
-        position: relative;
-        padding: 20px 0px;
-        .quotes {
-            //border: 1px solid yellow;
-            width: 90%;//80%;
-            font-weight: bold;//800;
-            color: #fff;
-            font-size: 30px;
-            text-decoration: underline;
-            //font-style: italic;
-        }
-        .long_quotes{
-            width: 90%;//80%;
-            font-weight: bold;//800;
-            color: #fff;
-            font-size: 22px;
-            text-decoration: underline;
-            margin-bottom: 10px;
-            //font-style: italic;
-        }
-        .author {
-            color: #fff;
-            font-weight: bold; //800;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            font-size: 20px;
-            font-style: italic;
         }
     }
 }

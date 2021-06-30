@@ -23,11 +23,11 @@ const initialState: calendarState = {
   }
 };
 
-export const calendarSlice = createSlice({
-  name: 'handleCalendar',
+export const dateSlice = createSlice({
+  name: 'date',
   initialState,
   reducers: {
-    showCalendar: (state) => {
+    handleCalendar: (state) => {
       state.show = !state.show;
     },
     handleDate: (state, action: PayloadAction<string>) => {
@@ -39,12 +39,8 @@ export const calendarSlice = createSlice({
   }
 });
 
-export const {
-  showCalendar,
-  handleDate,
-  handleDayInfo
-} = calendarSlice.actions;
+export const { handleCalendar, handleDate, handleDayInfo } = dateSlice.actions;
 
-export const calendar = (state: RootState) => state.handleCalendar;
+export const date = (state: RootState) => state.date;
 
-export default calendarSlice.reducer;
+export default dateSlice.reducer;

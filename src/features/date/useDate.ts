@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useAppDispatch } from '../../app/hooks';
-import { handleDayInfo } from './calendarSlice';
+import { handleDayInfo } from './dateSlice';
 
 const useCalendar = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const useCalendar = () => {
 
   const getDate = (str: string) => {
     let date = null;
-    //const date = strToDate(str);
+
     if (str.length > 0) {
       date = strToDate(str);
     } else {
@@ -52,8 +52,6 @@ const useCalendar = () => {
       month: month,
       day: day
     });
-
-    //console.log('da:', dateInfo);
 
     dispatch(handleDayInfo({ today: today, month: month, day: day }));
   };

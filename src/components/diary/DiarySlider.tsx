@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import './DiarySlider.scss';
 import Emotion from './Emotion';
 import Question from './Question';
-//import { IconContext } from 'react-icons';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 
 import { useAppSelector } from '../../app/hooks';
@@ -76,10 +75,3 @@ const DiarySlider: React.FC = () => {
 };
 
 export default DiarySlider;
-
-{
-  /* <div 
-ref={el => { console.log(el); observed.current = el; }} // or setState(el)
-className="App"
-> */
-}

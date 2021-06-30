@@ -3,16 +3,11 @@ import DayPicker from 'react-day-picker';
 import './ReactDayPicker.scss';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import {
-  showCalendar,
-  handleDate
-} from '../../features/calendar/calendarSlice';
+import { handleCalendar, handleDate } from '../../features/date/dateSlice';
 
 const ReactDayPicker: React.FC = () => {
   const dispatch = useAppDispatch();
-  const show = useAppSelector((state) => state.handleCalendar.show);
-
-  //const [selectedDay, setSelectDay] = useState<any[]>([new Date()]);
+  const calendarShow = useAppSelector((state) => state.date.show);
   const [selectedDay, setSelectDay] = useState<any>(new Date());
 
   // const [completedDays, setCompletedDays] = useState([
@@ -21,7 +16,6 @@ const ReactDayPicker: React.FC = () => {
   // ]);
 
   useEffect(() => {
-    //const date = selectedDay.toLocaleString();
     const date = selectedDay.toISOString().split('T')[0];
     dispatch(handleDate(date));
   }, []);
@@ -51,7 +45,7 @@ const ReactDayPicker: React.FC = () => {
     setSelectDay(day);
   };
 
-  if (!show) {
+  if (!calendarShow) {
     return null;
   } else {
     return (
@@ -73,7 +67,7 @@ const ReactDayPicker: React.FC = () => {
           </button>
           <button
             className="close_btn"
-            onClick={() => dispatch(showCalendar())}
+            onClick={() => dispatch(handleCalendar())}
           >
             닫기
           </button>

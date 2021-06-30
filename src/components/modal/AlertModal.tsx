@@ -1,6 +1,6 @@
 import React from 'react';
 import './AlertModal.scss';
-import ModalTemplate from '../modal/ModalTemplate';
+import ModalTemplate from './ModalTemplate';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { handleModal } from '../../features/modal/modalSlice';
