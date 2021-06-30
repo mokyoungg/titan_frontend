@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import userInfoReducer from '../features/form/userInfoSlice';
 import modalReducer from '../features/modal/modalSlice';
 import quotesReducer from '../features/quotes/fetchQuotesSlice';
-import calendarReducer from '../features/calendar/calendarSlice';
+import dateReducer from '../features/date/dateSlice';
 import weatherReducer from '../features/weather/fetchWeatherSlice';
 import diaryReducer from '../features/diary/diarySlice';
 import listReducer from '../features/fetchList/fetchListSlice';
@@ -12,7 +12,7 @@ export const store = configureStore({
     userInfo: userInfoReducer,
     showModal: modalReducer,
     quotes: quotesReducer,
-    handleCalendar: calendarReducer,
+    date: dateReducer,
     weather: weatherReducer,
     diary: diaryReducer,
     list: listReducer

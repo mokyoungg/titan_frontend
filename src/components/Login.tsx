@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.scss';
-import AlertModal from './alert/AlertModal';
+import AlertModal from './modal/AlertModal';
 
 import useForm from '../features/form/useForm';
 

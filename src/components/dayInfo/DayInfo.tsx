@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import './TodayInfo.scss';
+import './DayInfo.scss';
 import { Link } from 'react-router-dom';
-import TodayRecord from '../todayRecord/TodayRecord';
+import DayRecord from '../dayRecord/DayRecord';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import useCalendar from '../../features/calendar/useCalendar';
-import { handleSelectList } from '../../features/fetchList/fetchListSlice';
+import useDate from '../../features/date/useDate';
+import { handleSelectDiary } from '../../features/fetchList/fetchListSlice';
 
-const TodayInfo: React.FC = () => {
+const DayInfo: React.FC = () => {
   const dispatch = useAppDispatch();
-  const currentDate = useAppSelector(
-    (state) => state.handleCalendar.selectDate
-  );
-  //const list = useAppSelector((state) => state.diary.list);
-  const list = useAppSelector((state) => state.list.totalList);
-  const selectList = useAppSelector((state) => state.list.selectList);
+  const currentDate = useAppSelector((state) => state.date.selectDate);
+  const totalList = useAppSelector((state) => state.list.totalList);
 
-  const { getDate, dateInfo } = useCalendar();
+  const { getDate, dateInfo } = useDate();
 
   const [dayCheck, setDayCheck] = useState<boolean>(false);
 
   useEffect(() => {
     getDate(currentDate);
 
-    if (list) {
-      for (let i = 0; i < list.length; i++) {
-        if (list[i].date === currentDate) {
-          dispatch(handleSelectList(list[i]));
+    if (totalList) {
+      for (let i = 0; i < totalList.length; i++) {
+        if (totalList[i].date === currentDate) {
+          dispatch(handleSelectDiary(totalList[i]));
           setDayCheck(true);
           break;
         } else {
+          dispatch(handleSelectDiary({}));
           setDayCheck(false);
         }
       }
     }
-  }, [currentDate, list]);
+  }, [currentDate, totalList]);
 
   return (
     // <>
     // {!dayCheck ? (
-    <div className="today_info_wrap">
+    <div className="day_info_wrap">
       {/* <Link to="/diary" style={{ textDecoration: 'none', width: '100%' }}> */}
       <div className="date_section">
         <div className="today">
@@ -67,7 +64,7 @@ const TodayInfo: React.FC = () => {
           </div>
         </Link>
       ) : (
-        <TodayRecord />
+        <DayRecord />
       )}
     </div>
     // ) : (
@@ -77,4 +74,4 @@ const TodayInfo: React.FC = () => {
   );
 };
 
-export default TodayInfo;
+export default DayInfo;

@@ -1,7 +1,5 @@
-import React, { useState, useEffect, ReactEventHandler } from 'react';
+import React from 'react';
 import './DiaryDetail.scss';
-import { RouteComponentProps } from 'react-router';
-//import { Link } from 'react-router-dom';
 
 import { IconContext } from 'react-icons';
 import {
@@ -15,36 +13,20 @@ import {
 } from 'react-icons/bi';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import editDiary from '../../features/diary/editDiary';
 
 const DiaryDetail: React.FC = (props: any) => {
+  const {
+    answerArr,
+    answerStr,
+    edit,
+    handleChange,
+    handleEdit,
+    handleDelete
+  } = editDiary(props);
   const { record } = props.location.state;
-  console.log(props);
 
   const questionList = useAppSelector((state) => state.diary.questionList);
-
-  const [answerArr, setAnswerArr] = useState<any>();
-  const [answerStr, setAnswerStr] = useState<any>();
-  const [edit, setEdit] = useState(false);
-  const [loadedList, setLoadedList] = useState<any>();
-
-  useEffect(() => {
-    const newAnswerList = arrToString(record.answerList);
-    setAnswerArr(record.answerList);
-    setAnswerStr(newAnswerList);
-    const fetchloadedList = localStorage.getItem('diary_list');
-    if (fetchloadedList) {
-      const load = JSON.parse(fetchloadedList);
-      setLoadedList(load);
-    }
-  }, []);
-
-  const arrToString = (obj: any) => {
-    let result: any = {};
-    for (let key in obj) {
-      result[key] = obj[key].toString().replaceAll(',', `\n`);
-    }
-    return result;
-  };
 
   const renderEmotion = (emotion: string) => {
     return (
@@ -91,36 +73,6 @@ const DiaryDetail: React.FC = (props: any) => {
         onChange={handleChange}
       ></textarea>
     );
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    const newAnswerStr = { ...answerStr, [name]: value };
-    const newAnswerArr = { ...answerArr, [name]: value.split(`\n`) };
-    setAnswerStr(newAnswerStr);
-    setAnswerArr(newAnswerArr);
-  };
-
-  const handleEdit = () => {
-    const newRecord = { ...record, answerList: answerArr };
-
-    const newList = loadedList.map((el: any) => {
-      if (el.id == newRecord.id) {
-        return newRecord;
-      } else {
-        return el;
-      }
-    });
-
-    localStorage.setItem('diary_list', JSON.stringify(newList));
-    setEdit(!edit);
-  };
-
-  const handleDelete = () => {
-    const newList = loadedList.filter((el: any) => el['id'] !== record['id']);
-    localStorage.setItem('diary_list', JSON.stringify(newList));
-    //history.push('/main');
-    //props.history.push('/main');
   };
 
   return (

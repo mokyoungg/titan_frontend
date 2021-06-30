@@ -5,34 +5,28 @@ import { ListInterface } from './list.model';
 
 interface fetchList {
   totalList: ListInterface[];
-  selectList: ListInterface | any;
-  todayList: ListInterface | any;
+  selectDiary: ListInterface | any;
 }
 
 const initialState: fetchList = {
   totalList: [],
-  selectList: {},
-  todayList: {}
+  selectDiary: {}
 };
 
 export const fetchListSlice = createSlice({
   name: 'list',
   initialState,
   reducers: {
-    handleList: (state, action) => {
+    handleTotalList: (state, action) => {
       state.totalList = action.payload;
     },
-    handleSelectList: (state, action) => {
-      //console.log('action', action);
-      state.selectList = action.payload;
-    },
-    handleTodayList: (state, action) => {
-      state.todayList = action.payload;
+    handleSelectDiary: (state, action) => {
+      state.selectDiary = action.payload;
     }
   }
 });
 
-export const { handleList, handleSelectList } = fetchListSlice.actions;
+export const { handleTotalList, handleSelectDiary } = fetchListSlice.actions;
 
 export const list = (state: RootState) => state.list;
 

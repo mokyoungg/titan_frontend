@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignUp.scss';
-import AlertModal from './alert/AlertModal';
+import AlertModal from './modal/AlertModal';
 
 import useForm from '../features/form/useForm';
 

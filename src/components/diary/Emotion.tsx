@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Emotion.scss';
-import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import {
   BiHappyAlt,
@@ -8,7 +7,6 @@ import {
   BiSmile,
   BiMeh,
   BiSad,
-  BiXCircle,
   BiX
 } from 'react-icons/bi';
 
@@ -47,9 +45,6 @@ const Emotion: React.FC = () => {
 
   return (
     <div className="emotion_wrap">
-      {/* <div className="progress_bar">
-        <div className="current_progress"></div>
-      </div> */}
       <div className="emotion_header">
         <div className="emotion_question">Guest, how do you feel today?</div>
       </div>
