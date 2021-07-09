@@ -6,8 +6,8 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { handleModal } from '../../features/modal/modalSlice';
 
 const Alert: React.FC = () => {
-  const modalType = useAppSelector((state) => state.showModal.type);
   const dispatch = useAppDispatch();
+  const modalType = useAppSelector((state) => state.showModal.type);
 
   const handleRefresh = () => {
     history.go(-1);
