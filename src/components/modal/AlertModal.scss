@@ -86,8 +86,8 @@
                 width: 100px;
                 height: 25px;
                 background: transparent;
-                border:  1px solid #fa4c06;;
-                color: #FA4C06;
+                border:  1px solid #fff;
+                color: #fff;//#FA4C06;
                 font-family: 'Roboto', sans-serif;
                 font-weight: bold;
                 font-size: 10px;
@@ -95,8 +95,8 @@
                 transition: 0.4s;
                 cursor: pointer;
                 &:hover {
-                    background: #FA4C06;
-                    color: #fff;
+                    background: #fff;
+                    color: #FA4C06;
                 }
             }
         }

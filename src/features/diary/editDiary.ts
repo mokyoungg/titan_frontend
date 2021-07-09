@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { handleTotalList } from '../fetchList/fetchListSlice';
+import { handleModal } from '../modal/modalSlice';
 
 const DIARY_LS = 'diary_list';
 
@@ -60,10 +61,11 @@ const editDiary = (props: any) => {
   };
 
   const handleDelete = () => {
-    confirm('삭제하시겠습니까?');
-    // const newList = loadedList.filter((el: any) => el['id'] !== record['id']);
-    // localStorage.setItem(DIARY_LS, JSON.stringify(newList));
-    // dispatch(handleTotalList(newList));
+    const newList = loadedList.filter((el: any) => el['id'] !== record['id']);
+    localStorage.setItem(DIARY_LS, JSON.stringify(newList));
+    dispatch(handleTotalList(newList));
+    alert('삭제되었습니다.');
+    props.history.push('/main');
   };
 
   const handlePage = () => {

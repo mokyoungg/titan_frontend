@@ -1,6 +1,6 @@
 import React from 'react';
 import './DiaryDetail.scss';
-
+import AlertModal from '../modal/AlertModal';
 import { IconContext } from 'react-icons';
 import {
   BiHappyAlt,
@@ -105,6 +105,7 @@ const DiaryDetail: React.FC = (props: any) => {
           <BiCheck />
         </button>
       </div>
+      <AlertModal />
     </div>
   );
 };
