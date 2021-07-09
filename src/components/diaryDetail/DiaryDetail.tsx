@@ -8,7 +8,9 @@ import {
   BiSmile,
   BiMeh,
   BiSad,
-  BiXCircle,
+  BiTrash,
+  BiEditAlt,
+  BiCheck,
   BiX
 } from 'react-icons/bi';
 
@@ -22,7 +24,8 @@ const DiaryDetail: React.FC = (props: any) => {
     edit,
     handleChange,
     handleEdit,
-    handleDelete
+    handleDelete,
+    handlePage
   } = editDiary(props);
   const { record } = props.location.state;
 
@@ -77,21 +80,31 @@ const DiaryDetail: React.FC = (props: any) => {
 
   return (
     <div className="diary_detail_wrap">
-      <button className="edit_btn" onClick={() => handleEdit()}>
-        {edit ? `Done` : 'Edit'}
-      </button>
-      <button className="delete_btn" onClick={() => handleDelete()}>
-        Delete
-      </button>
       <div className="diary_detail_header">
         <div className="diary_detail_date">{record.date}</div>
-        <div className="diary_detail_emotion">
-          <IconContext.Provider value={{ color: '#2c2c2c' }}>
-            {renderEmotion(record.emotion)}
-          </IconContext.Provider>
+        <div className="detail_btn_container">
+          <button className="edit_btn" onClick={() => handleEdit()}>
+            <BiEditAlt />
+            {edit ? `Done` : 'Edit'}
+          </button>
+          <button className="delete_btn" onClick={() => handleDelete()}>
+            <BiTrash />
+            Delete
+          </button>
         </div>
       </div>
+      <div className="diary_detail_emotion">
+        I feel...
+        <IconContext.Provider value={{ color: '#2c2c2c' }}>
+          {renderEmotion(record.emotion)}
+        </IconContext.Provider>
+      </div>
       <div className="diary_detail_section">{renderAnswerList()}</div>
+      <div className="diary_detail_footer">
+        <button className="confirm_btn" onClick={() => handlePage()}>
+          <BiCheck />
+        </button>
+      </div>
     </div>
   );
 };
