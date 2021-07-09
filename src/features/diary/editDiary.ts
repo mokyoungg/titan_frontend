@@ -60,12 +60,25 @@ const editDiary = (props: any) => {
   };
 
   const handleDelete = () => {
-    const newList = loadedList.filter((el: any) => el['id'] !== record['id']);
-    localStorage.setItem(DIARY_LS, JSON.stringify(newList));
-    dispatch(handleTotalList(newList));
+    confirm('삭제하시겠습니까?');
+    // const newList = loadedList.filter((el: any) => el['id'] !== record['id']);
+    // localStorage.setItem(DIARY_LS, JSON.stringify(newList));
+    // dispatch(handleTotalList(newList));
   };
 
-  return { answerArr, answerStr, edit, handleChange, handleEdit, handleDelete };
+  const handlePage = () => {
+    props.history.push('/main');
+  };
+
+  return {
+    answerArr,
+    answerStr,
+    edit,
+    handleChange,
+    handleEdit,
+    handleDelete,
+    handlePage
+  };
 };
 
 export default editDiary;

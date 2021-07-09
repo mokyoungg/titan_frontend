@@ -5,20 +5,7 @@
     @include wrap;
     background-color: #fff;
     border: 1px solid #000;
-    .edit_btn {
-        width: 50px;
-        height: 30px;
-        background-color: transparent;
-        border: 1px solid #000;
-        cursor: pointer;
-        transition: 0.4s;
-        &:hover {
-            background: red;
-        }
-        &:active{
-            transform: scale(0.9);
-        }
-    }
+    font-style: 'Open Sans', sans-serif;
     .diary_detail_header {
         //border: 1px solid red;
         border-bottom: 2px solid #000;
@@ -33,9 +20,32 @@
           font-size: 20px;
           font-weight: bold;
        }
-       .diary_detail_emotion {
+       .detail_btn_container {
+           display: flex;
+           justify-content: space-between;
            font-size: 20px;
+           .edit_btn, .delete_btn{
+               display: flex;
+               cursor: pointer;
+               border: none;
+               outline: none;
+               background-color: transparent;
+               font-style: 'Open Sans', sans-serif;
+               font-size: 16px;
+               font-weight: bold;
+           }
+           .delete_btn{
+               margin-left: 10px;
+           }
        }
+    }
+    .diary_detail_emotion {
+        font-size: 20px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
     }
     .diary_detail_section {
         width: 90%;
@@ -66,6 +76,24 @@
                 margin-top: 10px;
                 font-weight: bold;
             }
+        }
+    }
+    .diary_detail_footer {
+        width: 90%;
+        margin: 0 auto;
+        .confirm_btn {
+            font-size: 30px;
+            border:none;
+            outline:none;
+            background: transparent;
+            border: 1px solid #000;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
         }
     }
 }
