@@ -72,6 +72,20 @@ const editDiary = (props: any) => {
     props.history.push('/main');
   };
 
+  const applyEnter = (question: any) => (
+    e: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    if (e.key === 'Enter') {
+      const lines = answerStr[question].split(`\n`);
+      for (let i = 0; i < lines.length; i++) {
+        lines[i] = lines[i].replace(/(\d+\.\s|^)/, i + 1 + '. ');
+      }
+      const enterStr = lines.join(`\n`);
+      setAnswerStr({ ...answerStr, [question]: enterStr });
+      setAnswerArr({ ...answerArr, [question]: enterStr.split(`\n`) });
+    }
+  };
+
   return {
     answerArr,
     answerStr,
@@ -79,7 +93,8 @@ const editDiary = (props: any) => {
     handleChange,
     handleEdit,
     handleDelete,
-    handlePage
+    handlePage,
+    applyEnter
   };
 };
 
