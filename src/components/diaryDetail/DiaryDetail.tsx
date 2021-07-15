@@ -1,6 +1,5 @@
 import React from 'react';
 import './DiaryDetail.scss';
-import AlertModal from '../modal/AlertModal';
 import { IconContext } from 'react-icons';
 import {
   BiHappyAlt,
@@ -25,7 +24,8 @@ const DiaryDetail: React.FC = (props: any) => {
     handleChange,
     handleEdit,
     handleDelete,
-    handlePage
+    handlePage,
+    applyEnter
   } = editDiary(props);
   const { record } = props.location.state;
 
@@ -47,7 +47,9 @@ const DiaryDetail: React.FC = (props: any) => {
     return questionList.map((question, index) => {
       return (
         <div className={edit ? `edit_article` : `detail_article`} key={index}>
-          <div className="detail_question">{question}</div>
+          <div className={edit ? `edit_question` : `detail_question`}>
+            {question}
+          </div>
           {question && answerArr && !edit && renderAnswer(question, index)}
           {question && answerStr && edit && renderText(question, index)}
         </div>
@@ -74,6 +76,7 @@ const DiaryDetail: React.FC = (props: any) => {
         value={answerStr[question]}
         name={question}
         onChange={handleChange}
+        onKeyUp={applyEnter(question)}
       ></textarea>
     );
   };
@@ -87,7 +90,10 @@ const DiaryDetail: React.FC = (props: any) => {
             <BiEditAlt />
             {edit ? `Done` : 'Edit'}
           </button>
-          <button className="delete_btn" onClick={() => handleDelete()}>
+          <button
+            className={edit ? 'modifying_edit' : 'delete_btn'}
+            onClick={() => handleDelete()}
+          >
             <BiTrash />
             Delete
           </button>
@@ -95,17 +101,19 @@ const DiaryDetail: React.FC = (props: any) => {
       </div>
       <div className="diary_detail_emotion">
         I feel...
-        <IconContext.Provider value={{ color: '#2c2c2c' }}>
+        <IconContext.Provider value={{ color: '#fff' }}>
           {renderEmotion(record.emotion)}
         </IconContext.Provider>
       </div>
       <div className="diary_detail_section">{renderAnswerList()}</div>
       <div className="diary_detail_footer">
-        <button className="confirm_btn" onClick={() => handlePage()}>
+        <button
+          className={edit ? `modifying_edit` : 'confirm_btn'}
+          onClick={() => handlePage()}
+        >
           <BiCheck />
         </button>
       </div>
-      <AlertModal />
     </div>
   );
 };
