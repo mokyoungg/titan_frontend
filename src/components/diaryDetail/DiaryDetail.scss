@@ -7,6 +7,7 @@
     border: 1px solid #000;
     font-style: 'Open Sans', sans-serif;
     color: #fff;
+    position: relative;
     .diary_detail_header {
         //border: 1px solid red;
         border-bottom: 2px solid #fff;
@@ -85,10 +86,9 @@
         }
     }
     .diary_detail_footer {
-        position: fixed;
-        width: 340px;
-        left: 348px;
-        bottom: 20px;
+       position: absolute;
+       left: 5%;
+       bottom: 5%;
         .confirm_btn {
             font-size: 30px;
             border:none;
